@@ -1,4 +1,4 @@
-An Apache log parser for MarkLogic Server. This is by no means a generic way to work with logs. I just need to scratch an itch.
+An Apache log parser for MarkLogic Server. This is by no means a generic way to work with logs. I just needed to scratch an itch.
 
 A log document will end up looking something like
 
