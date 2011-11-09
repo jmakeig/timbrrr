@@ -39,27 +39,30 @@ declare function local:day-of-week($date as xs:anyAtomicType?)  as xs:integer? {
 };
 
 (:let $d := doc("/raw/access_log.2010-12-27-00_00"):)
-for $d in collection("raw") return
-let $ls := tokenize($d, "\n")
-let $re := '^([\d.]+) (\S+) (\S+) \[([\w:/]+\s[+\-]\d{4})\] "(.+?)" (\d{3}) ([\-\d]+) "([^"]+)" "([^"]+)"$'
-for $l as xs:string at $i in $ls
-let $as := analyze-string($l, $re)
-let $timestamp := local:parse-dateTime($as//s:group[@nr eq 4]/string(.))
-let $request := $as//s:group[@nr eq 5]/string(.)
-where string-length($l) gt 0
-return xdmp:document-insert(concat(xdmp:node-uri($d), "/", encode-for-uri($as//s:group[@nr eq 4]/string(.)), "/", xdmp:hash64(concat($l, $i))), 
-<log id="{xdmp:hash64(concat($l, $i))}">
-  <ip>{$as//s:group[@nr eq 1]/string(.)}</ip>
-  <timestamp raw="{$as//s:group[@nr eq 4]/string(.)}" day-of-week="{local:day-of-week($timestamp)}">{$timestamp}</timestamp>
-  <request raw="{$request}">
-    <method>{tokenize($request, " ")[1]}</method>
-    <url>{tokenize($request, " ")[2]}</url>
-    <protocol>{tokenize($request, " ")[3]}</protocol>
-  </request>
-  <responseCode>{$as//s:group[@nr eq 6]/string(.)}</responseCode>
-  <referrer>{$as//s:group[@nr eq 8]/string(.)}</referrer>
-  <userAgent raw="{$as//s:group[@nr eq 9]/string(.)}">
-    {local:get-user-agent($as//s:group[@nr eq 9]/string(.))}
-  </userAgent>
-</log>, (xdmp:default-permissions()), ("processed")
-)
+for $d in collection("raw")
+return
+  let $ls := tokenize($d, "\n")
+  let $re := '^([\d.]+) (\S+) (\S+) \[([\w:/]+\s[+\-]\d{4})\] "(.+?)" (\d{3}) ([\-\d]+) "([^"]+)" "([^"]+)"$'
+  for $l as xs:string at $i in $ls
+    let $as := analyze-string($l, $re)
+    let $timestamp := local:parse-dateTime($as//s:group[@nr eq 4]/string(.))
+    let $request := $as//s:group[@nr eq 5]/string(.)
+    where string-length($l) gt 0
+    return (
+      xdmp:document-insert(concat(xdmp:node-uri($d), "/", encode-for-uri($as//s:group[@nr eq 4]/string(.)), "/", xdmp:hash64(concat($l, $i))), 
+        <log id="{xdmp:hash64(concat($l, $i))}">
+          <ip>{$as//s:group[@nr eq 1]/string(.)}</ip>
+          <timestamp raw="{$as//s:group[@nr eq 4]/string(.)}" day-of-week="{local:day-of-week($timestamp)}">{$timestamp}</timestamp>
+          <request raw="{$request}">
+            <method>{tokenize($request, " ")[1]}</method>
+            <url>{tokenize($request, " ")[2]}</url>
+            <protocol>{tokenize($request, " ")[3]}</protocol>
+          </request>
+          <responseCode>{$as//s:group[@nr eq 6]/string(.)}</responseCode>
+          <referrer>{$as//s:group[@nr eq 8]/string(.)}</referrer>
+          <userAgent raw="{$as//s:group[@nr eq 9]/string(.)}">
+            {local:get-user-agent($as//s:group[@nr eq 9]/string(.))}
+          </userAgent>
+        </log>, (xdmp:default-permissions()), ("processed")
+      )
+    )
