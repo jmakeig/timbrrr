@@ -28,8 +28,10 @@ let $result := for $w at $i in $weeks
 return (:$result:)
   xdmp:to-json(for $ag in distinct-values($result//agent)
     let $m := map:map()
-    let $_ := map:put($m, "name", $ag)
-    let $map := map:put($m, "data", for $wk in $result return if($wk/agent[. eq $ag]) then xs:int($wk/agent[. eq $ag]/@count) else 0)
-    return $m
+    return (
+      map:put($m, "name", $ag), 
+      map:put($m, "data", for $wk in $result return if($wk/agent[. eq $ag]) then xs:int($wk/agent[. eq $ag]/@count) else 0), 
+      $m
+    )
   )
 )
