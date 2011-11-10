@@ -1,10 +1,12 @@
 xquery version "1.0-ml";
+(
+xdmp:set-response-content-type("application/json"),
 (: Group by week, user agent. Aggregate by user agent frequency. :)
 let $min := xs:dateTime(xs:date(min(cts:element-values(xs:QName("timestamp")))))
 let $max := xs:dateTime(xs:date(max(cts:element-values(xs:QName("timestamp")))))
 let $total := ceiling(($max - $min) div xs:dayTimeDuration('P7D'))
-let $weeks := for $i in (0 to $total - 1) return $min + xs:dayTimeDuration(concat("P", $i * 7, "D"))
-for $w at $i in $weeks 
+let $weeks := for $i in (floor($total div 2) to $total - 2) return $min + xs:dayTimeDuration(concat("P", $i * 7, "D"))
+let $result := for $w at $i in $weeks 
   return <week start="{xs:date($w)}">{
     for $agent in 
       cts:element-value-co-occurrences(
@@ -23,3 +25,11 @@ for $w at $i in $weeks
       where cts:frequency($agent) gt 25
       return <agent count="{cts:frequency($agent)}">{string($agent)}</agent>
   }</week>
+return (:$result:)
+  xdmp:to-json(for $ag in distinct-values($result//agent)
+    let $m := map:map()
+    let $_ := map:put($m, "name", $ag)
+    let $map := map:put($m, "data", for $wk in $result return if($wk/agent[. eq $ag]) then xs:int($wk/agent[. eq $ag]/@count) else 0)
+    return $m
+  )
+)
