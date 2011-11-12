@@ -9,16 +9,31 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
   margin-bottom: 0.1em;
 }
+table {
+  border-collapse: collapse;
+}
+thead th {
+  border-bottom: solid 1px;
+}
 td, th {
   text-align: left;
-  padding: 0.25em;
+  padding: 0.5em;
 }
 .numeric { 
   text-align: right;
 }
-
+.title {
+  white-space: nowrap;
+}
 
 .sparkline {
   height: 20px;
   width: 120px;
+}
+.bar {
+  text-align: left;
+  display: block;
+  box-sizing: border-box;
+  padding: 0.25em;
+  background: rgba(204,204,204,.5);
 }

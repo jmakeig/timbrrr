@@ -61,7 +61,7 @@ function renderChart(data, container) {
 }
 
 $(document).ready(function() {
-  $("#UserAgents tr").each(function() {
+  $("#UserAgents tbody tr").each(function() {
     var ua = $(this).data("ua");
     var v = $(this).data("v");
     var id = $(this).find(".sparkline")[0].id;
