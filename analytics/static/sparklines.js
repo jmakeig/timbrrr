@@ -80,7 +80,9 @@ $(document).ready(function() {
       var direction = "flat";
       if(slope > 0.1) direction = "upward";
       if(slope < -0.1) direction = "downward";
-      $tr.find("td.direction div")[0].className = direction;
+      var dir = $tr.find("td.direction div")[0]
+        dir.className = direction;
+        dir.title = slope;
       renderChart(data, id);
     });
   });
