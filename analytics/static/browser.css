@@ -25,6 +25,32 @@ td, th {
 .title {
   white-space: nowrap;
 }
+.direction {
+  text-align: center;
+}
+.direction div {
+  width: 20px;
+  height: 20px;
+}
+.direction .upward {
+  color: green;
+}
+.direction .upward:after {
+  content: "⬆";
+}
+.direction .downward {
+  color: red;
+}
+.direction .downward:after {
+  content: "⬇";
+}
+.direction .flat {
+  color: #666;
+}
+.direction .flat:after {
+  content: "-";
+}
+
 
 .sparkline {
   height: 20px;

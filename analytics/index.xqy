@@ -7,6 +7,7 @@ xdmp:set-response-content-type("text/html"),
 	<link type="text/css" rel="stylesheet" href="/static/browser.css" />
 	<script type="text/javascript" src="/static/jquery.js">//</script>
   <script type="text/javascript" src="/static/highcharts.js">//</script>
+  <script type="text/javascript" src="/static/stats.js">//</script>
   <script type="text/javascript" src="/static/sparklines.js">//</script>
 </head>
 <body>
@@ -15,12 +16,13 @@ xdmp:set-response-content-type("text/html"),
     <col/>
     <col/>
     <col width="120"/>
+    <col/>
     <col width="600"/>
     <thead>
       <tr>
         <th>#</th>
         <th class="title">User Agent</th>
-        <th>Trend</th>
+        <th colspan="2">Trend</th>
         <th>Total</th>
       </tr>
     </thead>
@@ -49,9 +51,9 @@ xdmp:set-response-content-type("text/html"),
           <td class="numeric">{format-number($i, "#,###")}.</td>
           <td class="title">{string-join($agent/*/text(), " ")}</td>
           <td><div class="sparkline" id="sparkline{xdmp:random()}"></div></td>
+          <td class="direction"><div></div></td>
           <td class="numeric"><span style="width: {xs:float(cts:frequency($agent) div $max) * 100}%" class="bar">{format-number(cts:frequency($agent), "#,###")}</span></td>
-        </tr>
-      
+        </tr>   
   }
     </tbody>
   </table>
