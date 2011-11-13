@@ -1,9 +1,14 @@
 xdmp:set-response-content-type("text/html"),
 '<!DOCTYPE html>',
+let $min as xs:dateTime? := min(cts:element-values(xs:QName("timestamp")))
+let $max as xs:dateTime? := max(cts:element-values(xs:QName("timestamp")))
+
+let $suppress-internal := true()
+return
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<title>timbrrr</title>
+	<title>server.marklogic.com User Agent Statistics</title>
 	<link type="text/css" rel="stylesheet" href="/static/browser.css" />
 	<script type="text/javascript" src="/static/jquery.js">//</script>
   <script type="text/javascript" src="/static/highcharts.js">//</script>
@@ -12,13 +17,20 @@ xdmp:set-response-content-type("text/html"),
   <script type="text/javascript" src="/static/sparklines.js">//</script>
 </head>
 <body>
-  <h1>Timbrrr</h1>
+  <header>
+    <h1>server.marklogic.com</h1>
+    <div class="stats">
+      <div>From {format-dateTime($min, "[Y0001]-[M01]-[D01] [H01]:[m01]:[s01] [z]", "en", (), ())}</div>
+      <div>to {format-dateTime($max, "[Y0001]-[M01]-[D01] [H01]:[m01]:[s01] [z]", "en", (), ())}</div>
+      {if($suppress-internal) then <div>without internal addresses</div> else ()}
+    </div>
+  </header>
   <table id="UserAgents">
+    <col style="width: 2em;"/>
+    <col style="width: 12em;"/>
+    <col style="width:120px;"/>
+    <col style="width: 2em;"/>
     <col/>
-    <col/>
-    <col width="120"/>
-    <col/>
-    <col width="600"/>
     <thead>
       <tr>
         <th>#</th>
@@ -29,8 +41,8 @@ xdmp:set-response-content-type("text/html"),
     </thead>
     <tbody>
   {
-    let $start := xs:dateTime(xs:date(min(cts:element-values(xs:QName("timestamp")))))
-    let $end := xs:dateTime(xs:date(max(cts:element-values(xs:QName("timestamp")))))
+    let $start := xs:dateTime(xs:date($min))
+    let $end := xs:dateTime(xs:date($max))
     let $agents := 
       cts:element-value-co-occurrences(
         xs:QName("agent_name"), xs:QName("agent_version_major"),
@@ -39,13 +51,13 @@ xdmp:set-response-content-type("text/html"),
           (: Only the processed logs :)
           cts:collection-query("processed"),
           (: Filter internal IP addresses :)
-          cts:not-query(cts:element-value-query(xs:QName("ip"), "216.243.*", ("wildcarded"))),
-          (: Limit to a specific week :)
+          if($suppress-internal) then cts:not-query(cts:element-value-query(xs:QName("ip"), "216.243.*", ("wildcarded"))) else (),
+          (: Limit to a specific range :)
           cts:element-range-query(xs:QName("timestamp"), ">=", xs:dateTime($start)),
           cts:element-range-query(xs:QName("timestamp"), "<", xs:dateTime($end))
         ))
       )
-    let $max := max(for $a in $agents return cts:frequency($a))
+    let $max-freq := max(for $a in $agents return cts:frequency($a))
     return
       for $agent at $i in $agents        
         return 
@@ -54,10 +66,13 @@ xdmp:set-response-content-type("text/html"),
           <td class="title"><span data-ua="{$agent/*[1]}" data-v="{$agent/*[2]}">{string-join($agent/*/text(), " ")}</span></td>
           <td><div class="sparkline" id="sparkline{xdmp:random()}"></div></td>
           <td class="direction"><div></div></td>
-          <td class="numeric"><span style="width: {xs:float(cts:frequency($agent) div $max) * 100}%" class="bar">{format-number(cts:frequency($agent), "#,###")}</span></td>
+          <td class="numeric"><span style="width: {xs:float(cts:frequency($agent) div $max-freq) * 100}%" class="bar">{format-number(cts:frequency($agent), "#,###")}</span></td>
         </tr>   
   }
     </tbody>
   </table>
+  <footer>
+    Powered by <a href="http://www.marklogic.com/products/overview.html">MarkLogic</a> and <a href="https://github.com/jmakeig/timbrrr">Timbrrr</a>.
+  </footer>
 </body>
 </html>
