@@ -87,7 +87,7 @@ jQuery.fn.dataTableExt.oSort['user-agent-asc']  = function(aa,bb) {
   var objs = [$(aa), $(bb)];
   var data = [
     {"ua": objs[0].data("ua"), "v": objs[0].data("v")},
-    {"ua": objs[1].data("ua"), "v": objs[1].data("v")},
+    {"ua": objs[1].data("ua"), "v": objs[1].data("v")}
   ];
   if(data[0].ua === data[1].ua) {
     var v0 = parseInt(data[0].v);
@@ -100,7 +100,7 @@ jQuery.fn.dataTableExt.oSort['user-agent-desc']  = function(aa,bb) {
   var objs = [$(aa), $(bb)];
   var data = [
     {"ua": objs[0].data("ua"), "v": objs[0].data("v")},
-    {"ua": objs[1].data("ua"), "v": objs[1].data("v")},
+    {"ua": objs[1].data("ua"), "v": objs[1].data("v")}
   ];
   if(data[0].ua === data[1].ua) {
     var v0 = parseInt(data[0].v);
