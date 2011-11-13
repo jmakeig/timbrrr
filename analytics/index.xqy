@@ -7,6 +7,7 @@ xdmp:set-response-content-type("text/html"),
 	<link type="text/css" rel="stylesheet" href="/static/browser.css" />
 	<script type="text/javascript" src="/static/jquery.js">//</script>
   <script type="text/javascript" src="/static/highcharts.js">//</script>
+  <script type="text/javascript" src="/static/jquery.dataTables.js">//</script>
   <script type="text/javascript" src="/static/stats.js">//</script>
   <script type="text/javascript" src="/static/sparklines.js">//</script>
 </head>
@@ -47,9 +48,10 @@ xdmp:set-response-content-type("text/html"),
     let $max := max(for $a in $agents return cts:frequency($a))
     return
       for $agent at $i in $agents        
-        return <tr data-ua="{$agent/*[1]}" data-v="{$agent/*[2]}">
+        return 
+        <tr data-ua="{$agent/*[1]}" data-v="{$agent/*[2]}">
           <td class="numeric">{format-number($i, "#,###")}.</td>
-          <td class="title">{string-join($agent/*/text(), " ")}</td>
+          <td class="title"><span data-ua="{$agent/*[1]}" data-v="{$agent/*[2]}">{string-join($agent/*/text(), " ")}</span></td>
           <td><div class="sparkline" id="sparkline{xdmp:random()}"></div></td>
           <td class="direction"><div></div></td>
           <td class="numeric"><span style="width: {xs:float(cts:frequency($agent) div $max) * 100}%" class="bar">{format-number(cts:frequency($agent), "#,###")}</span></td>

@@ -60,6 +60,60 @@ function renderChart(data, container) {
   });
 }
 
+jQuery.fn.dataTableExt.oSort['numeric-comma-asc']  = function(aa,bb) {
+  // This is ugly and probably pretty inefficient
+  var a = $(aa).text()
+  var b = $(bb).text()
+  var x = (a == "-") ? 0 : a.replace( /,/, "" );
+  var y = (b == "-") ? 0 : b.replace( /,/, "" );
+  x = parseFloat( x );
+  y = parseFloat( y );
+  console.dir([x,y]);
+  return ((x < y) ? -1 : ((x > y) ?  1 : 0));
+};
+jQuery.fn.dataTableExt.oSort['numeric-comma-desc'] = function(aa,bb) {
+  // Why doesn't the following work?
+  //-(jQuery.fn.dataTableExt.oSort['numeric-comma-asc'].call(this, aa, bb));
+  var a = $(aa).text()
+  var b = $(bb).text()
+  var x = (a == "-") ? 0 : a.replace( /,/, "" );
+  var y = (b == "-") ? 0 : b.replace( /,/, "" );
+  x = parseFloat( x );
+  y = parseFloat( y );
+  return ((x < y) ? 1 : ((x > y) ?  -1 : 0));
+};
+
+jQuery.fn.dataTableExt.oSort['user-agent-asc']  = function(aa,bb) {
+  var objs = [$(aa), $(bb)];
+  var data = [
+    {"ua": objs[0].data("ua"), "v": objs[0].data("v")},
+    {"ua": objs[1].data("ua"), "v": objs[1].data("v")},
+  ];
+  if(data[0].ua === data[1].ua) {
+    var v0 = parseInt(data[0].v);
+    var v1 = parseInt(data[1].v);
+    return (v0 < v1) ? -1 : ((v0 > v1) ?  1 : 0)
+  } 
+  return (data[0].ua < data[1].ua) ? -1 : (data[0].ua > data[1].ua ? 1 : 0)
+};
+jQuery.fn.dataTableExt.oSort['user-agent-desc']  = function(aa,bb) {
+  var objs = [$(aa), $(bb)];
+  var data = [
+    {"ua": objs[0].data("ua"), "v": objs[0].data("v")},
+    {"ua": objs[1].data("ua"), "v": objs[1].data("v")},
+  ];
+  if(data[0].ua === data[1].ua) {
+    var v0 = parseInt(data[0].v);
+    var v1 = parseInt(data[1].v);
+    return (v0 < v1) ? 1 : ((v0 > v1) ?  -1 : 0)
+  } 
+  return (data[0].ua < data[1].ua) ? 1 : (data[0].ua > data[1].ua ? -1 : 0)
+};
+
+jQuery.fn.dataTableExt.oSort['trend-asc']  = function(aa,bb) {
+  console.dir(arguments);
+};
+
 $(document).ready(function() {
   $("#UserAgents tbody tr").each(function() {
     var $tr = $(this);
@@ -83,18 +137,26 @@ $(document).ready(function() {
       var dir = $tr.find("td.direction div")[0]
         dir.className = direction;
         dir.title = slope;
+        $(dir).data("slope", slope);
       renderChart(data, id);
     });
+    
   });
-/*
-  $.getJSON("user-agent-weeks.xqy?ua=Firefox&v=8", function(data) {
-    renderChart(data, "Firefox_8");
+  
+  $("#UserAgents").dataTable({
+    "bPaginate": false,
+    "bLengthChange": false,
+    "bFilter": false,
+    "bSort": true,
+    "bInfo": false,
+    "bAutoWidth": false,
+    "aoColumns": [
+      null,
+      {"sType": "user-agent"},
+      null, // TODO: Can't seem to get trend sorting to work. Probably because of the colspan in the header.
+      null,
+      {"sType": "numeric-comma"}
+    ]
   });
-  $.getJSON("user-agent-weeks.xqy?ua=Internet+Explorer&v=9", function(data) {
-    renderChart(data, "IE_9");
-  }); 
-  $.getJSON("user-agent-weeks.xqy?ua=Chrome&v=14", function(data) {
-    renderChart(data, "Chrome_14");
-  });  
-*/
+  
 });
