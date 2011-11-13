@@ -17,7 +17,7 @@ After loading and processing, a log document will end up looking something like
   <timestamp raw="01/Jan/2011:00:00:00 -0700" day-of-week="2">2011-01-01T00:00:00</timestamp>
   <request raw="GET /path/?foo=bar HTTP/1.1">
     <method>GET</method>
-    <url>/redirector/?version=4.2-6.1&amp;license=evaluation&amp;link=0001&amp;update=explore_content</url>
+    <url>/path/?foo=bar</url>
     <protocol>HTTP/1.1</protocol>
   </request>
   <responseCode>302</responseCode>
