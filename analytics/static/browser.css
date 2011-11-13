@@ -20,6 +20,9 @@ td, th {
   text-align: left;
   padding: 0.5em;
 }
+tbody tr {
+  border-top: solid 1px #eee;
+}
 header {
   position: relative;
   margin-bottom: 1em;
@@ -74,8 +77,10 @@ footer {
 }
 .bar {
   text-align: left;
+  text-indent: 0.25em;
   display: block;
   box-sizing: border-box;
   padding: 0.25em;
   background: rgba(204,204,204,.5);
-}
+  border-radius: 2px;
+  }
