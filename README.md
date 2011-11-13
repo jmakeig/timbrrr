@@ -1,6 +1,14 @@
-An Apache log parser for MarkLogic Server. This is by no means a generic way to work with logs. I just needed to scratch an itch.
+# Timbrrr
+Timbrrr is a user agent analysis tool that operates on Apache logs. It includes a log parser as well as a front-end web UI for visualizing user agent trends using MarkLogic Server. 
 
-A log document will end up looking something like
+*This is by no means a generic or robust way to work with logs. I just needed to scratch an itch.*
+
+## Usage
+The `config` directory includes a database configuration package to set the appropriate index settings. You can import this into a MarkLogic 5 instance to create or update a database.
+
+The `load` directory includes scripts for parsing log entries as well as seeding master data about the universe of user agent strings (using [User Agent String.com](http://www.useragentstring.com/)). I’ve used Information Studion in MarkLogic to load the raw access log files into a collection called `raw`.
+
+After loading and processing, a log document will end up looking something like
 
 ```xml
 <log id="16191458111230932830">
@@ -29,4 +37,30 @@ A log document will end up looking something like
   </userAgent>
 </log>
 ```
-Uses [User Agent String.com](http://www.useragentstring.com/) to parse user-agents.
+
+The  `analytics` directory includes a UI and some web services to render a visualization of requests by user agent over time. You should set the root of a MarkLogic app server to point to this directory and the context database to be the one you created in the configuration step above.
+
+
+## License
+Copyright 2011 Justin Makeig <https://github.com/jmakeig>
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+jQuery (v1.6.4) is copyright the [jQuery Project](http://jquery.org) and included under the terms of the [MIT license](https://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt)
+
+DataTables (v1.8.2) is copyright Allan Jardine and is included under the terms of the [BSD license](http://www.datatables.net/license_bsd)
+
+HighCharts (v2.1.8) is copyright [Highsoft Solutions AS](http://highsoft.com) and is included under the terms of the [Creative Commons Attribution-NonCommercial 3.0 License](http://creativecommons.org/licenses/by-nc/3.0/)
+
+Least squares calculation adapted from [“Linear least squares in Javascript”](http://dracoblue.net/dev/linear-least-squares-in-javascript/159/) by Jan Schütze (DracoBlue)
+
