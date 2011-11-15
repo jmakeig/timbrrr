@@ -45,7 +45,7 @@ The  `analytics` directory includes a UI and some web services to render a visua
 
 
 ## License
-Copyright 2011 Justin Makeig <https://github.com/jmakeig>
+Copyright 2011 Justin Makeig <<https://github.com/jmakeig>>
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -59,7 +59,8 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-jQuery (v1.6.4) is copyright the [jQuery Project](http://jquery.org) and included under the terms of the [MIT license](https://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt)
+### Third-Party Software
+jQuery (v1.7) is copyright the [jQuery Project](http://jquery.org) and included under the terms of the [MIT license](https://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt)
 
 DataTables (v1.8.2) is copyright Allan Jardine and is included under the terms of the [BSD license](http://www.datatables.net/license_bsd)
 
