@@ -1,7 +1,13 @@
+xquery version "1.0-ml";
+import module namespace date="https://github.com/jmakeig/timbrrr" at "/date.xqy";
+declare namespace tmbr="https://github.com/jmakeig/timbrrr"; 
+
 xdmp:set-response-content-type("text/html"),
 '<!DOCTYPE html>',
-let $min as xs:dateTime? := min(cts:element-values(xs:QName("timestamp")))
-let $max as xs:dateTime? := max(cts:element-values(xs:QName("timestamp")))
+let $b := xdmp:get-request-field("b")
+let $e := xdmp:get-request-field("e")
+let $min as xs:dateTime? := if(not(empty($b))) then xs:dateTime(xs:date($b)) else min(cts:element-values(xs:QName("timestamp")))
+let $max as xs:dateTime? := if(not(empty($e))) then xs:dateTime(xs:date($e)) else max(cts:element-values(xs:QName("timestamp")))
 
 let $suppress-internal := true()
 return
@@ -25,6 +31,16 @@ return
       {if($suppress-internal) then <div>without internal addresses</div> else ()}
     </div>
   </header>
+  <form method="get" action=".">{
+    for $i in ("b", "e") return
+    <select name="{$i}">{
+      for $w in tmbr:all-weeks()
+      return <option value="{xs:date($w)}">
+      {if(xdmp:get-request-field($i) = string(xs:date($w))) then attribute selected {"selected"} else ()}
+      {xs:date($w)}</option>
+    }</select>,
+    <button type="submit">Go</button>
+  }</form>
   <table id="UserAgents">
     <col style="width: 2em;"/>
     <col style="width: 12em;"/>
