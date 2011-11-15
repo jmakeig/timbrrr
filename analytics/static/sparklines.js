@@ -115,12 +115,30 @@ jQuery.fn.dataTableExt.oSort['trend-asc']  = function(aa,bb) {
 };
 
 $(document).ready(function() {
+  function parseQueryString(url) {
+    var params = {}
+    window.location.search.replace(
+      new RegExp("([^?=&]+)(=([^&]*))?", "g"),
+      function($0, $1, $2, $3) { params[$1] = $3; }
+    );
+    return params;
+  };
   $("#UserAgents tbody tr").each(function() {
     var $tr = $(this);
     var ua = $tr.data("ua");
     var v = $tr.data("v");
     var id = $tr.find(".sparkline")[0].id;
-    $.getJSON("user-agent-weeks.xqy?ua="+ua+"&v=" + v, function(data) {
+    var qs = parseQueryString(window.location.search);
+    var params = {
+      "ua": ua,
+      "v": v,
+    };
+    for(var q in qs) {
+      if("b" === q || "e" === q) {
+        params[q] = qs[q];
+      }
+    }
+    $.getJSON("user-agent-weeks.xqy?" + $.param(params), function(data) {
       /* Should only have to do this once */
       var x = [];
       for(var i = 0; i < data.length; i++) {

@@ -2,8 +2,11 @@ xquery version "1.0-ml";
 declare namespace tmbr="https://github.com/jmakeig/timbrrr";
 
 declare function tmbr:all-weeks() {
-  let $min := xs:dateTime(xs:date(min(cts:element-values(xs:QName("timestamp")))))
-  let $max := xs:dateTime(xs:date(max(cts:element-values(xs:QName("timestamp")))))
+  tmbr:all-weeks((), ())
+};
+declare function tmbr:all-weeks($begin as xs:dateTime?, $end as xs:dateTime?) {
+  let $min := if(not(empty($begin))) then $begin else xs:dateTime(xs:date(min(cts:element-values(xs:QName("timestamp")))))
+  let $max := if(not(empty($end))) then $end else xs:dateTime(xs:date(max(cts:element-values(xs:QName("timestamp")))))
   let $total := ceiling(($max - $min) div xs:dayTimeDuration('P7D'))
   return 
     for $i in (0 to $total - 1) return $min + xs:dayTimeDuration(concat("P", $i * 7, "D"))
@@ -38,5 +41,9 @@ declare function tmbr:agent-by-week($a as xs:string, $v as xs:int, $ws as xs:dat
 xdmp:set-response-content-type("application/json"),
 xdmp:to-json(tmbr:agent-by-week(
   xdmp:get-request-field("ua"),
-  xs:int(xdmp:get-request-field("v"))
+  xs:int(xdmp:get-request-field("v")), 
+  tmbr:all-weeks(
+    xs:dateTime(xs:date(xdmp:get-request-field("b"))),
+    xs:dateTime(xs:date(xdmp:get-request-field("e")))
+  )
 ))
