@@ -123,6 +123,9 @@ $(document).ready(function() {
     );
     return params;
   };
+  $('select').selectToUISlider({
+    labels: 5
+  });
   $("#UserAgents tbody tr").each(function() {
     var $tr = $(this);
     var ua = $tr.data("ua");
@@ -144,8 +147,7 @@ $(document).ready(function() {
       for(var i = 0; i < data.length; i++) {
         x[i] = i + 1;
       }
-      // Fit a line to the most recent 25 points
-      var ls = leastSquares(x.slice(data.length - 25, data.length - 1), data.slice(data.length - 25, data.length - 1));
+      var ls = leastSquares(x, data);
       // Calculate the slope of the line
       var slope = (ls[1][1] - ls[1][0]) / (ls[0][1] - ls[0][0]);
       // Update the display of the slope direction

@@ -15,32 +15,44 @@ return
 <head>
 	<meta charset="utf-8" />
 	<title>server.marklogic.com User Agent Statistics</title>
+	<link type="text/css" href="/static/vendor/ui-lightness/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
+	<link rel="stylesheet" href="/static/vendor/selectToUISlider.css" type="text/css" />
 	<link type="text/css" rel="stylesheet" href="/static/browser.css" />
 	<script type="text/javascript" src="/static/jquery.js">//</script>
+	<script type="text/javascript" src="/static/vendor/jquery-ui-1.8.16.custom.min.js">//</script>
   <script type="text/javascript" src="/static/highcharts.js">//</script>
   <script type="text/javascript" src="/static/jquery.dataTables.js">//</script>
+  <script type="text/javascript" src="/static/vendor/selectToUISlider.js">//</script>
   <script type="text/javascript" src="/static/stats.js">//</script>
   <script type="text/javascript" src="/static/sparklines.js">//</script>
 </head>
 <body>
   <header>
-    <h1>server.marklogic.com</h1>
-    <div class="stats">
+    <h1><a href="/">server.marklogic.com</a></h1>
+    <!--<div class="stats">
       <div>From {format-dateTime($min, "[Y0001]-[M01]-[D01] [H01]:[m01]:[s01] [z]", "en", (), ())}</div>
       <div>to {format-dateTime($max, "[Y0001]-[M01]-[D01] [H01]:[m01]:[s01] [z]", "en", (), ())}</div>
       {if($suppress-internal) then <div>without internal addresses</div> else ()}
     </div>
+    -->
   </header>
-  <form method="get" action=".">{
-    for $i in ("b", "e") return
-    <select name="{$i}">{
-      for $w in tmbr:all-weeks()
-      return <option value="{xs:date($w)}">
-      {if(xdmp:get-request-field($i) = string(xs:date($w))) then attribute selected {"selected"} else ()}
-      {xs:date($w)}</option>
-    }</select>,
+  <form method="get" action=".">
+    <div id="DatePicker">{
+      let $be := ($min, $max)
+      return
+      for $i at $j in ("b", "e") 
+      return
+      <select name="{$i}" id="{$i}">{
+        for $w in tmbr:all-weeks()
+        let $fw as xs:string := format-date(xs:date($w), '[Y0001]-[M01]-[D01]')
+        return <option value="{$fw}">
+        {if($be[$j] >= $w) then attribute selected {"selected"} else ()}
+        {$fw}</option>
+      }</select>
+    }</div>
+    <!--<a href="/?e={format-dateTime(current-dateTime(),'[Y0001]-[M01]-[D01]')}&amp;b={format-dateTime(current-dateTime() - xs:dayTimeDuration('P60D'), '[Y0001]-[M01]-[D01]')}">Last two months</a>,-->
     <button type="submit">Go</button>
-  }</form>
+  </form>
   <table id="UserAgents">
     <col style="width: 2em;"/>
     <col style="width: 12em;"/>

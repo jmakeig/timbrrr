@@ -60,11 +60,17 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 ### Third-Party Software
-jQuery (v1.7) is copyright the [jQuery Project](http://jquery.org) and included under the terms of the [MIT license](https://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt)
+jQuery (v1.7) is copyright the [jQuery Project](http://jquery.org) and included under the terms of the [MIT license](https://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt).
 
-DataTables (v1.8.2) is copyright Allan Jardine and is included under the terms of the [BSD license](http://www.datatables.net/license_bsd)
+jQuery UI (v1.8.16) is copyright the [jQuery Project](http://jquery.org) and included under the terms of the [MIT license](https://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt).
 
-HighCharts (v2.1.8) is copyright [Highsoft Solutions AS](http://highsoft.com) and is included under the terms of the [Creative Commons Attribution-NonCommercial 3.0 License](http://creativecommons.org/licenses/by-nc/3.0/)
 
-Least squares calculation adapted from [“Linear least squares in Javascript”](http://dracoblue.net/dev/linear-least-squares-in-javascript/159/) by Jan Schütze (DracoBlue)
+DataTables (v1.8.2) is copyright Allan Jardine and is included under the terms of the [BSD license](http://www.datatables.net/license_bsd).
+
+HighCharts (v2.1.8) is copyright [Highsoft Solutions AS](http://highsoft.com) and is included under the terms of the [Creative Commons Attribution-NonCommercial 3.0 License](http://creativecommons.org/licenses/by-nc/3.0/).
+
+selectToUISlider (v2) is copyright [Scott Jehl](mailto:scott@filamentgroup.com) and is included under the [MIT license](http://filamentgroup.com/examples/mit-license.txt).
+
+Least squares calculation adapted from [“Linear least squares in Javascript”](http://dracoblue.net/dev/linear-least-squares-in-javascript/159/) by Jan Schütze (DracoBlue).
+
 

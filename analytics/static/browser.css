@@ -84,3 +84,31 @@ footer {
   background: rgba(204,204,204,.5);
   border-radius: 2px;
   }
+
+
+.ui-widget {
+  font-family: inherit;
+}
+.ui-slider .ui-state-active .ui-slider-tooltip, 
+.ui-slider .ui-state-focus .ui-slider-tooltip, 
+.ui-slider .ui-state-hover .ui-slider-tooltip {
+  width: 4em;
+  margin-left: -1.5em;
+}
+.ui-slider .ui-widget-header {
+  background: #999;
+}
+#DatePicker {
+  margin: 2em 3em;
+}
+select {
+  display: none;
+}
+.ui-slider-label {
+  width: 6em;
+  font-size: 0.75em;
+}
+.ui-slider-tooltip .ttContent {
+  font-size: 0.75em !important;
+  white-space: nowrap;
+}
