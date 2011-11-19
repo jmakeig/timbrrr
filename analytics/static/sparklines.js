@@ -124,7 +124,7 @@ $(document).ready(function() {
     return params;
   };
   $('select').selectToUISlider({
-    labels: 5,
+    labels: 7,
     sliderOptions: {
       change: function(evt) {
         var b = $(this).slider('values', 0);
