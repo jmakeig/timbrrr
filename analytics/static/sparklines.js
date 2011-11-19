@@ -124,7 +124,15 @@ $(document).ready(function() {
     return params;
   };
   $('select').selectToUISlider({
-    labels: 5
+    labels: 5,
+    sliderOptions: {
+      change: function(evt) {
+        var b = $(this).slider('values', 0);
+        var e = $(this).slider('values', 1);
+        //console.log([b,e]);
+        $(this).closest("form").submit();
+      }
+    }
   });
   $("#UserAgents tbody tr").each(function() {
     var $tr = $(this);
