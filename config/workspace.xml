@@ -1,0 +1,370 @@
+<export><workspace name="timbrrr"><query name="process">xquery version "1.0-ml";
+declare namespace s="http://www.w3.org/2009/xpath-functions/analyze-string";
+declare namespace local="local";
+
+declare variable $ua-map as map:map := map:map(doc("/user-agents.map")/*);
+
+declare function local:get-user-agent($raw as xs:string?) as element()* {
+  map:get($ua-map, $raw)
+(:
+  let $m as map:map* := xdmp:from-json(xdmp:http-get(concat("http://www.useragentstring.com/?uas=", xdmp:url-encode($raw), "&amp;amp;getJSON=all"))[2])
+  for $k in map:keys($m)
+    return element {$k} { map:get($m, $k)}
+:)
+};
+
+declare function local:parse-dateTime($str) {
+  if(empty($str) or $str eq "") then () 
+  else 
+  let $ts := tokenize($str, " ")
+  let $dts := tokenize($ts[1], ":")
+  let $dates := tokenize($dts[1], "/")
+  let $months := ("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+  return xs:dateTime(
+    concat(
+    (: date :)
+    $dates[3], "-", if(index-of($months, $dates[2]) lt 10) then "0" else "", index-of($months, $dates[2]), "-", $dates[1],
+    (: time :)
+    "T",
+    $dts[2], ":", $dts[3], ":", $dts[4]
+    )
+  )
+};
+
+(: From Functx :)
+declare function local:day-of-week($date as xs:anyAtomicType?)  as xs:integer? {
+  if(empty($date))
+  then ()
+  else xs:integer((xs:date($date) - xs:date('1901-01-06')) div xs:dayTimeDuration('P1D')) mod 7
+};
+
+for $d in collection("loaded-2011-11-25")
+return
+  let $ls := tokenize($d, "\n")
+  let $re := '^([\d.]+) (\S+) (\S+) \[([\w:/]+\s[+\-]\d{4})\] "(.+?)" (\d{3}) ([\-\d]+) "([^"]+)" "([^"]+)"$'
+  for $l as xs:string at $i in $ls
+    let $as := analyze-string($l, $re)
+    let $timestamp := local:parse-dateTime($as//s:group[@nr eq 4]/string(.))
+    let $request := $as//s:group[@nr eq 5]/string(.)
+    where string-length($l) gt 0
+    return (
+      xdmp:document-insert(concat(xdmp:node-uri($d), "/", encode-for-uri($as//s:group[@nr eq 4]/string(.)), "/", xdmp:hash64(concat($l, $i))), 
+        &lt;log id="{xdmp:hash64(concat($l, $i))}"&gt;
+          &lt;ip&gt;{$as//s:group[@nr eq 1]/string(.)}&lt;/ip&gt;
+          &lt;timestamp raw="{$as//s:group[@nr eq 4]/string(.)}" day-of-week="{local:day-of-week($timestamp)}"&gt;{$timestamp}&lt;/timestamp&gt;
+          &lt;request raw="{$request}"&gt;
+            &lt;method&gt;{tokenize($request, " ")[1]}&lt;/method&gt;
+            &lt;url&gt;{tokenize($request, " ")[2]}&lt;/url&gt;
+            &lt;protocol&gt;{tokenize($request, " ")[3]}&lt;/protocol&gt;
+          &lt;/request&gt;
+          &lt;responseCode&gt;{$as//s:group[@nr eq 6]/string(.)}&lt;/responseCode&gt;
+          &lt;referrer&gt;{$as//s:group[@nr eq 8]/string(.)}&lt;/referrer&gt;
+          &lt;userAgent raw="{$as//s:group[@nr eq 9]/string(.)}"&gt;
+            {local:get-user-agent($as//s:group[@nr eq 9]/string(.))}
+          &lt;/userAgent&gt;
+        &lt;/log&gt;, (xdmp:default-permissions()), ("processed")
+      )
+    )
+;
+declare namespace local="local";
+
+declare function local:get-user-agent($raw as xs:string?) as element()* {
+  if(empty($raw) or "" eq $raw) then () else
+    let $url := concat("http://www.useragentstring.com/?uas=", xdmp:url-encode($raw), "&amp;amp;getJSON=all")
+    let $_ := xdmp:log(concat("Getting UA information from " , $url))
+    let $m as map:map* := xdmp:from-json(xdmp:http-get($url)[2])
+    for $k in map:keys($m)
+      return element {$k} { map:get($m, $k)}
+};
+
+let $map := map:map(doc("/user-agents.map")/*)
+let $_ := for $ua in distinct-values(collection("processed")//userAgent/@raw)
+return 
+  if(empty(map:get($map, $ua))) then
+    map:put($map, $ua, local:get-user-agent($ua))
+  else (
+    xdmp:log(concat("Already have UA for ", $ua))
+  )
+return xdmp:document-insert("/user-agents.map", document {$map})
+;
+count(doc("/user-agents.map")//map:entry),
+count(distinct-values(collection("processed")//userAgent/@raw)),
+xdmp:save("/Users/jmakeig/tmp/user-agents.map.xml", doc("/user-agents.map"))</query><query name="web service">xquery version "1.0-ml";
+declare namespace loal="local";
+
+declare function local:get-user-agent($raw as xs:string?) as element()* {
+  let $m as map:map* := xdmp:from-json(xdmp:http-get($raw)[2])
+  for $k in map:keys($m)
+    return element {$k} { map:get($m, $k)}
+};
+
+local:get-user-agent("http://www.useragentstring.com/?uas=Opera/9.70%20(Linux%20i686%20;%20U;%20en-us)%20Presto/2.2.0&amp;amp;getJSON=all")</query><query name="Query 2">xquery version "1.0-ml";
+declare namespace html = "http://www.w3.org/1999/xhtml";
+&lt;p&gt;hello world&lt;/p&gt;</query><query name="Query 3">foxquery version "1.0-ml";
+declare namespace html = "http://www.w3.org/1999/xhtml";
+let $d := doc("/raw/access_log.2010-12-15-00_00")
+return xdmp:node-replace($d/root(), document {&lt;asdf/&gt;})
+;
+doc("/raw/access_log.2010-12-15-00_00")</query><query name="estimate">xquery version "1.0-ml";
+xdmp:estimate(collection("processed")),
+"
+",
+collection("processed")[1 to 10]</query><query name="delete processed">xquery version "1.0-ml";
+for $d in collection("processed")
+return xdmp:document-delete(xdmp:node-uri($d))</query><query name="dateTime">xquery version "1.0-ml";
+declare namespace local = "local";
+
+declare function local:parse-dateTime($str) {
+  let $ts := tokenize($str, " ")
+  let $dts := tokenize($ts[1], ":")
+  let $dates := tokenize($dts[1], "/")
+  let $months := ("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+  return xs:dateTime(
+    concat(
+    (: date :)
+    $dates[3], "-", if(index-of($months, $dates[2]) lt 10) then "0" else "", index-of($months, $dates[2]), "-", $dates[1],
+    (: time :)
+    "T",
+    $dts[2], ":", $dts[3], ":", $dts[4]
+    )
+  )
+};
+
+(:format-dateTime(current-dateTime(), "[D01]/[MNn,*-3]/[Y0001]"),:)
+(:xdmp:parse-dateTime("[D01]/[MNn,*-3]/[Y0001]", "02/Nov/2011"),:)
+(:xdmp:parse-dateTime("[D01] [M,*-3] [Y0001]", "31 Dec 2002"),:)
+local:parse-dateTime("26/Jan/2011:15:04:46 -0800"),
+()</query><query name="seed UA map">xquery version "1.0-ml";
+declare namespace local="local";
+
+declare function local:get-user-agent($raw as xs:string?) as element()* {
+  if(empty($raw) or "" eq $raw) then () else
+    let $url := concat("http://www.useragentstring.com/?uas=", xdmp:url-encode($raw), "&amp;amp;getJSON=all")
+    let $_ := xdmp:log(concat("Getting UA information from " , $url))
+    let $m as map:map* := xdmp:from-json(xdmp:http-get($url)[2])
+    for $k in map:keys($m)
+      return element {$k} { map:get($m, $k)}
+};
+
+let $map := map:map(doc("/user-agents.map")/*)
+let $_ := for $ua in distinct-values(collection("processed")//userAgent/@raw)
+return 
+  if(empty(map:get($map, $ua))) then
+    map:put($map, $ua, local:get-user-agent($ua))
+  else (
+    xdmp:log(concat("Already have UA for ", $ua))
+  )
+return xdmp:document-insert("/user-agents.map", document {$map})
+;
+doc("/user-agents.map"),
+xdmp:save("/Users/jmakeig/Workspaces/timbrrr/load/user-agents.map.xml", doc("/user-agents.map"))</query><query name="match UA counts">xquery version "1.0-ml";
+count(doc("/user-agents.map")//map:entry),
+count(distinct-values(collection("processed")//userAgent/@raw)),
+xdmp:save("/Users/jmakeig/tmp/user-agents.map.xml", doc("/user-agents.map"))</query><query name="OS">xquery version "1.0-ml";
+(:declare default collation "http://marklogic.com/collation/codepoint";:)
+for $co in 
+  cts:element-value-co-occurrences(
+    xs:QName("os_name"), xs:QName("os_versionNumber"),
+    ("frequency-order", "collation=http://marklogic.com/collation/codepoint")
+  )
+return &lt;os frequency="{cts:frequency($co)}"&gt;{concat($co/cts:value[1], " (", $co/cts:value[2], ")")}&lt;/os&gt;</query><query name="user-agent">xquery version "1.0-ml";
+declare default collation "http://marklogic.com/collation/codepoint";
+(:for $co in:)
+xdmp:to-json(
+  cts:element-value-co-occurrences(
+    xs:QName("agent_name"), xs:QName("agent_version_major"),
+    ("frequency-order", "map"),
+    cts:collection-query("processed")
+  )
+)
+(:return &lt;agent frequency="{cts:frequency($co)}"&gt;{concat($co/cts:value[1], " ", $co/cts:value[2])}&lt;/agent&gt;:)
+</query><query name="major, minor ua">xquery version "1.0-ml";
+declare namespace local="local";
+let $uas := map:map(doc("/user-agents.map")/element())
+let $_ := for $k in map:keys($uas)
+  let $value := map:get($uas, $k)[self::* except (self::agent_version_major, self::agent_version_minor) ]
+  let $ver := data($value[self::agent_version])
+  let $vers := tokenize($ver, "\.")
+  return 
+    map:put($uas, $k, 
+      ($value, 
+      if(matches($ver, "^[0-9]+")) then 
+        (&lt;agent_version_major&gt;{$vers[1]}&lt;/agent_version_major&gt;, if($vers[2] castable as xs:unsignedInt) then &lt;agent_version_minor&gt;{$vers[2]}&lt;/agent_version_minor&gt; else ())
+      else ())
+    )
+return xdmp:document-insert("/user-agents.map", document { $uas })
+;
+doc("/user-agents.map")</query><query name="reload uas">xquery version "1.0-ml";
+xdmp:document-insert("/user-agents.map", xdmp:document-get("/Users/jmakeig/Workspaces/timbrrr/load/user-agents.map.xml"))
+;
+doc("/user-agents.map")</query><query name="Query 4">xquery version "1.0-ml";
+(&lt;a/&gt;, &lt;b/&gt;, &lt;c/&gt;, &lt;d/&gt;)[self::* except (self::d, self::b)]</query><query name="Query 1">xquery version "1.0-ml";
+doc("/raw/access_log.2011-02-17-00_00/17%2FFeb%2F2011%3A06%3A52%3A08%20-0800/2843896372871917216")</query><query name="Query 5">xquery version "1.0-ml";
+declare namespace html = "http://www.w3.org/1999/xhtml";
+&lt;p&gt;hello world&lt;/p&gt;</query><query name="Query 6">xquery version "1.0-ml";
+doc('/raw/access_log.2011-03-28-00_00/28%2FMar%2F2011%3A07%3A58%3A25%20-0700/6548902963747566181')</query><query name="stats">xquery version "1.0-ml";
+min(cts:element-values(xs:QName("timestamp"), (), "type=dateTime")),
+max(cts:element-values(xs:QName("timestamp"), (), "type=dateTime")),
+xdmp:estimate(/log)</query><query name="Query 7">xquery version "1.0-ml";
+let $data := map:map()
+let $_ := map:put($data, "cols", xdmp:from-json('[{"label":"Safari","type":"number"},{"label":"Internet Explorer","type":"number"}]'))
+let $_ := map:put($data, "rows", 
+  for $i in 
+
+)
+return xdmp:to-json($data)</query><query name="Query 8">xquery version "1.0-ml";
+cts:element-values("</query><query name="UA buckets">xquery version "1.0-ml";
+declare namespace tmbr="https://github.com/jmakeig/timbrrr";
+
+declare function tmbr:all-weeks() {
+  let $min := xs:dateTime(xs:date(min(cts:element-values(xs:QName("timestamp")))))
+  let $max := xs:dateTime(xs:date(max(cts:element-values(xs:QName("timestamp")))))
+  let $total := ceiling(($max - $min) div xs:dayTimeDuration('P7D'))
+  return 
+    for $i in (0 to $total - 1) return $min + xs:dayTimeDuration(concat("P", $i * 7, "D"))
+};
+declare function tmbr:agent-by-week($a as xs:string, $v as xs:int) {
+  tmbr:agent-by-week($a, $v, ())
+};
+declare function tmbr:agent-by-week($a as xs:string, $v as xs:int, $ws as xs:dateTime*) as xs:int* {
+  (: Group by week, user agent. Aggregate by user agent frequency. :)
+  let $weeks := if(empty($ws)) then tmbr:all-weeks() else $ws
+  for $w at $i in $weeks 
+    return sum( (: Sum converts empty sequences to zeros, which is what we want here :)
+      cts:frequency(
+        cts:element-value-co-occurrences(
+          xs:QName("agent_name"), xs:QName("agent_version_major"),
+          ("collation-1=http://marklogic.com/collation/codepoint", "frequency-order"),
+          cts:and-query((
+            (: Only the processed logs :)
+            cts:collection-query("processed"),
+            cts:element-range-query(xs:QName("agent_name"), "=", $a, "collation=http://marklogic.com/collation/codepoint"),
+            cts:element-range-query(xs:QName("agent_version_major"), "=", $v),
+            (: Limit to a specific week :)
+            cts:element-range-query(xs:QName("timestamp"), "&gt;=", $w),
+            cts:element-range-query(xs:QName("timestamp"), "&lt;", $w + xs:dayTimeDuration("P7D")),
+            (: Filter internal IP addresses :)
+            cts:not-query(cts:element-value-query(xs:QName("ip"), "216.243.*", ("wildcarded")))
+          ))
+        )
+      )
+    )
+};
+
+xdmp:to-json(tmbr:agent-by-week("Firefox", 3)),
+xdmp:to-json(tmbr:agent-by-week("Firefox", 7)),
+xdmp:to-json(tmbr:agent-by-week("Internet Explorer", 9))</query><query name="Query 10">xquery version "1.0-ml";
+(: Group by week, user agent. Aggregate by user agent frequency. :)
+let $min := xs:dateTime(xs:date(min(cts:element-values(xs:QName("timestamp")))))
+let $max := xs:dateTime(xs:date(max(cts:element-values(xs:QName("timestamp")))))
+let $total := ceiling(($max - $min) div xs:dayTimeDuration('P7D'))
+let $weeks := for $i in (0 to $total - 1) return $min + xs:dayTimeDuration(concat("P", $i * 7, "D"))
+let $result := for $w at $i in $weeks 
+  return &lt;week start="{xs:date($w)}"&gt;{
+    for $agent in 
+      cts:element-value-co-occurrences(
+        xs:QName("agent_name"), xs:QName("agent_version_major"),
+        ("collation-1=http://marklogic.com/collation/codepoint", "frequency-order"),
+        cts:and-query((
+          (: Only the processed logs :)
+          cts:collection-query("processed"),
+          (: Limit to a specific week :)
+          cts:element-range-query(xs:QName("timestamp"), "&gt;=", $w),
+          cts:element-range-query(xs:QName("timestamp"), "&lt;", $w + xs:dayTimeDuration("P7D")),
+          (: Filter internal IP addresses :)
+          cts:not-query(cts:element-value-query(xs:QName("ip"), "216.243.*", ("wildcarded")))
+        ))
+      )
+      where cts:frequency($agent) gt 25
+      return &lt;agent count="{cts:frequency($agent)}"&gt;{string($agent)}&lt;/agent&gt;
+  }&lt;/week&gt;
+return (:$result:)
+  xdmp:to-json(for $ag in distinct-values($result//agent)
+    let $m := map:map()
+    let $_ := map:put($m, "name", $ag)
+    let $map := map:put($m, "data", for $wk in $result return if($wk/agent[. eq $ag]) then xs:int($wk/agent[. eq $ag]/@count) else 0)
+    return $m
+  )</query><query name="Query 9">xquery version "1.0-ml";
+count(collection("processed")/log[starts-with(ip, "216.243")]),
+count(cts:search(collection("processed"), 
+  cts:not-query(cts:element-value-query(xs:QName("ip"), "216.243.*", ("wildcarded"))),
+  ("unfiltered")
+))</query><query name="distinct IPs">xquery version "1.0-ml";
+distinct-values(collection("processed")//ip[cts:contains(., "216.243.*")])</query><query name="6 mos.">xquery version "1.0-ml";
+
+(:import module namespace functx="http://www.functx.com" at "/MarkLogic/functx/functx-1.0-nodoc-2007-01.xqy";:)
+
+let $start := xs:dateTime(xs:date(min(cts:element-values(xs:QName("timestamp")))))
+let $end := xs:dateTime(xs:date(max(cts:element-values(xs:QName("timestamp")))))
+return
+  for $agent in 
+    cts:element-value-co-occurrences(
+      xs:QName("agent_name"), xs:QName("agent_version_major"),
+      ("collation-1=http://marklogic.com/collation/codepoint", "frequency-order", "limit=10"),
+      cts:and-query((
+        (: Only the processed logs :)
+        cts:collection-query("processed"),
+        (: Filter internal IP addresses :)
+        cts:not-query(cts:element-value-query(xs:QName("ip"), "216.243.*", ("wildcarded"))),
+        (: Limit to a specific week :)
+        cts:element-range-query(xs:QName("timestamp"), "&gt;=", xs:dateTime($start)),
+        cts:element-range-query(xs:QName("timestamp"), "&lt;", xs:dateTime($end))
+      ))
+    )
+    return &lt;agent count="{cts:frequency($agent)}"&gt;{string-join($agent/*/text(), " ")}&lt;/agent&gt;
+    
+    </query><query name="Query 11">xquery version "1.0-ml";
+cts:element-values(xs:QName("agent_name"), (), "collation=http://marklogic.com/collation/codepoint")
+</query><query name="Query 12">xquery version "1.0-ml";
+declare namespace tmbr="https://github.com/jmakeig/timbrrr";
+
+declare function tmbr:all-weeks() {
+  let $min := xs:dateTime(xs:date(min(cts:element-values(xs:QName("timestamp")))))
+  let $max := xs:dateTime(xs:date(max(cts:element-values(xs:QName("timestamp")))))
+  let $total := ceiling(($max - $min) div xs:dayTimeDuration('P7D'))
+  return 
+    for $i in (0 to $total - 1) return $min + xs:dayTimeDuration(concat("P", $i * 7, "D"))
+};
+declare function tmbr:agent-by-week($a as xs:string, $v as xs:int) {
+  tmbr:agent-by-week($a, $v, ())
+};
+declare function tmbr:agent-by-week($a as xs:string, $v as xs:int, $ws as xs:dateTime*) as xs:int* {
+  (: Group by week, user agent. Aggregate by user agent frequency. :)
+  let $weeks := if(empty($ws)) then tmbr:all-weeks() else $ws
+  for $w in $weeks 
+    let $query as cts:query := cts:and-query((
+      (: Only the processed logs :)
+      cts:collection-query("processed"),
+      cts:element-range-query(xs:QName("agent_name"), "=", $a, "collation=http://marklogic.com/collation/codepoint"),
+      if($v) then cts:element-range-query(xs:QName("agent_version_major"), "=", $v) else (),
+      (: Limit to a specific week :)
+      cts:element-range-query(xs:QName("timestamp"), "&gt;=", $w),
+      cts:element-range-query(xs:QName("timestamp"), "&lt;", $w + xs:dayTimeDuration("P7D")),
+      (: Filter internal IP addresses :)
+      cts:not-query(cts:element-value-query(xs:QName("ip"), "216.243.*", ("wildcarded")))
+    ))
+    return sum( (: Sum converts empty sequences to zeros, which is what we want here :)
+      cts:frequency(
+        if($v) then
+          cts:element-value-co-occurrences(
+            xs:QName("agent_name"), xs:QName("agent_version_major"),
+            ("collation-1=http://marklogic.com/collation/codepoint", "frequency-order"),
+            $query
+          )
+        else 
+          cts:element-values(
+            xs:QName("agent_name"), (),
+            ("collation=http://marklogic.com/collation/codepoint"),
+            $query
+          )
+      )
+    )
+};
+(:xdmp:set-response-content-type("application/json"),:)
+xdmp:to-json(
+  tmbr:agent-by-week(
+    "Firefox",
+    ()
+  )
+)
+</query></workspace></export>
