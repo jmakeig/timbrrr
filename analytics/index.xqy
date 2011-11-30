@@ -1,11 +1,14 @@
 xquery version "1.0-ml";
 import module namespace date="https://github.com/jmakeig/timbrrr" at "/date.xqy";
 declare namespace tmbr="https://github.com/jmakeig/timbrrr"; 
+declare option xdmp:mapping "false";
 
 xdmp:set-response-content-type("text/html"),
 '<!DOCTYPE html>',
 let $b := xdmp:get-request-field("b")
 let $e := xdmp:get-request-field("e")
+let $ua := xdmp:get-request-field("ua")
+let $v := "v" = xdmp:get-request-field("d")
 let $min as xs:dateTime? := if(not(empty($b))) then xs:dateTime(xs:date($b)) else min(cts:element-values(xs:QName("timestamp")))
 let $max as xs:dateTime? := if(not(empty($e))) then xs:dateTime(xs:date($e)) else max(cts:element-values(xs:QName("timestamp")))
 
@@ -71,27 +74,39 @@ return
   {
     let $start := xs:dateTime(xs:date($min))
     let $end := xs:dateTime(xs:date($max))
+    let $q := cts:and-query((
+      (: Only the processed logs :)
+      cts:collection-query("processed"),
+      if($ua) then cts:element-range-query(xs:QName("agent_name"), "=", $ua, "collation=http://marklogic.com/collation/codepoint") else (),
+      (: Filter internal IP addresses :)
+      if($suppress-internal) then cts:not-query(cts:element-value-query(xs:QName("ip"), "216.243.*", ("wildcarded"))) else (),
+      (: Limit to a specific range :)
+      cts:element-range-query(xs:QName("timestamp"), ">=", xs:dateTime($start)),
+      cts:element-range-query(xs:QName("timestamp"), "<", xs:dateTime($end))
+    ))
     let $agents := 
-      cts:element-value-co-occurrences(
-        xs:QName("agent_name"), xs:QName("agent_version_major"),
-        ("collation-1=http://marklogic.com/collation/codepoint", "frequency-order", "limit=25"), 
-        cts:and-query((
-          (: Only the processed logs :)
-          cts:collection-query("processed"),
-          (: Filter internal IP addresses :)
-          if($suppress-internal) then cts:not-query(cts:element-value-query(xs:QName("ip"), "216.243.*", ("wildcarded"))) else (),
-          (: Limit to a specific range :)
-          cts:element-range-query(xs:QName("timestamp"), ">=", xs:dateTime($start)),
-          cts:element-range-query(xs:QName("timestamp"), "<", xs:dateTime($end))
-        ))
-      )
+      if(not($v)) then
+        cts:element-values(
+          xs:QName("agent_name"), (), ("collation=http://marklogic.com/collation/codepoint", "frequency-order", "limit=10"), $q
+        )
+      else
+        cts:element-value-co-occurrences(
+          xs:QName("agent_name"), xs:QName("agent_version_major"),
+          ("collation-1=http://marklogic.com/collation/codepoint", "frequency-order", "limit=25"), 
+          $q
+        )
     let $max-freq := max(for $a in $agents return cts:frequency($a))
     return
       for $agent at $i in $agents        
         return 
-        <tr data-ua="{$agent/*[1]}" data-v="{$agent/*[2]}">
+        <tr>
+          {attribute data-ua {if($v) then $agent/*[1] else $agent }}
+          {if($v) then attribute data-v {$agent/*[2]} else () }
           <td class="numeric">{format-number($i, "#,###")}.</td>
-          <td class="title"><span data-ua="{$agent/*[1]}" data-v="{$agent/*[2]}">{string-join($agent/*/text(), " ")}</span></td>
+          <td class="title"><span>
+            {attribute data-ua {if($v) then $agent/*[1] else $agent }}
+            {if($v) then attribute data-v {$agent/*[2]} else () }
+            <a href="/?ua={if($v) then $agent/*[1] else $agent}&amp;d=v">{if($v) then string-join($agent/*/text(), " ") else $agent}</a></span></td>
           <td><div class="sparkline" id="sparkline{xdmp:random()}"></div></td>
           <td class="direction"><div></div></td>
           <td class="numeric"><span style="width: {xs:float(cts:frequency($agent) div $max-freq) * 100}%" class="bar">{format-number(cts:frequency($agent), "#,###")}</span></td>

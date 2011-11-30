@@ -6,7 +6,7 @@ declare default function namespace "http://www.w3.org/2005/xpath-functions";
 xdmp:set-response-content-type("application/json"),
 xdmp:to-json(tmbr:agent-by-week(
   xdmp:get-request-field("ua"),
-  xs:int(xdmp:get-request-field("v")), 
+  if(empty(xdmp:get-request-field("v"))) then () else xs:int(xdmp:get-request-field("v")),
   tmbr:all-weeks(
     xs:dateTime(xs:date(xdmp:get-request-field("b"))),
     xs:dateTime(xs:date(xdmp:get-request-field("e")))

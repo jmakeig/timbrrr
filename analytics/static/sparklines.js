@@ -141,9 +141,9 @@ $(document).ready(function() {
     var id = $tr.find(".sparkline")[0].id;
     var qs = parseQueryString(window.location.search);
     var params = {
-      "ua": ua,
-      "v": v,
+      "ua": ua
     };
+    if(v) params["v"] = v;
     for(var q in qs) {
       if("b" === q || "e" === q) {
         params[q] = qs[q];
