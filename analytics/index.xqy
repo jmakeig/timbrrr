@@ -53,8 +53,8 @@ return
         {$fw}</option>
       }</select>
     }</div>
-    <!--<a href="/?e={format-dateTime(current-dateTime(),'[Y0001]-[M01]-[D01]')}&amp;b={format-dateTime(current-dateTime() - xs:dayTimeDuration('P60D'), '[Y0001]-[M01]-[D01]')}">Last two months</a>,-->
-    <!--<button type="submit">Go</button>-->
+    {for $dim in xdmp:get-request-field("d") return <input type="hidden" name="d" value="{$dim}"/>}
+    {if(exists($ua)) then <input type="hidden" name="ua" value="{$ua}"/> else ()}
   </form>
   <table id="UserAgents">
     <col style="width: 2em;"/>
