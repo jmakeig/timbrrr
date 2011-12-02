@@ -5,7 +5,7 @@
       <user>admin</user>
       <group>Default</group>
       <host>justin-makeigs-macbook-pro.local</host>
-      <timestamp>2011-11-02T13:04:23.894417-07:00</timestamp>
+      <timestamp>2011-12-02T13:26:31.817323-08:00</timestamp>
       <platform>macosx</platform>
     </metadata>
     <name>logs</name>
@@ -506,16 +506,30 @@
 	  <collation/>
 	  <range-value-positions>false</range-value-positions>
 	</range-element-index>
+	<range-element-index>
+	  <scalar-type>unsignedInt</scalar-type>
+	  <namespace-uri/>
+	  <collation/>
+	  <range-value-positions>false</range-value-positions>
+	  <localname>agent_version_major</localname>
+	</range-element-index>
+	<range-element-index>
+	  <scalar-type>unsignedInt</scalar-type>
+	  <namespace-uri/>
+	  <collation/>
+	  <range-value-positions>false</range-value-positions>
+	  <localname>agent_version_minor</localname>
+	</range-element-index>
       </range-element-indexes>
       <range-element-attribute-indexes>
 	<range-element-attribute-index>
 	  <scalar-type>unsignedInt</scalar-type>
 	  <parent-namespace-uri/>
+	  <parent-localname>timestamp</parent-localname>
 	  <namespace-uri/>
+	  <localname>day-of-week</localname>
 	  <collation/>
 	  <range-value-positions>false</range-value-positions>
-	  <parent-localname>timestamp</parent-localname>
-	  <localname>day-of-week</localname>
 	</range-element-attribute-index>
       </range-element-attribute-indexes>
       <element-word-lexicons/>
@@ -544,4 +558,81 @@
       <schema-database>Schemas</schema-database>
     </links>
   </package-database>
+  <package-http-server xmlns="http://marklogic.com/package/servers">
+    <metadata>
+      <package-version>1.0</package-version>
+      <user>admin</user>
+      <group>Default</group>
+      <host>justin-makeigs-macbook-pro.local</host>
+      <timestamp>2011-12-02T13:26:31.817323-08:00</timestamp>
+      <platform>macosx</platform>
+    </metadata>
+    <server-type>http-server</server-type>
+    <group-name>Default</group-name>
+    <name>timbrrr</name>
+    <package-http-properties>
+      <enabled>true</enabled>
+      <root>/Users/jmakeig/Workspaces/timbrrr/analytics</root>
+      <port>9001</port>
+      <webDAV>false</webDAV>
+      <execute>true</execute>
+      <display-last-login>false</display-last-login>
+      <address>0.0.0.0</address>
+      <backlog>256</backlog>
+      <threads>32</threads>
+      <request-timeout>30</request-timeout>
+      <keep-alive-timeout>5</keep-alive-timeout>
+      <session-timeout>3600</session-timeout>
+      <max-time-limit>3600</max-time-limit>
+      <default-time-limit>600</default-time-limit>
+      <static-expires>3600</static-expires>
+      <pre-commit-trigger-depth>1000</pre-commit-trigger-depth>
+      <pre-commit-trigger-limit>10000</pre-commit-trigger-limit>
+      <collation>http://marklogic.com/collation/</collation>
+      <authentication>application-level</authentication>
+      <concurrent-request-limit>0</concurrent-request-limit>
+      <compute-content-length>false</compute-content-length>
+      <log-errors>true</log-errors>
+      <debug-allow>true</debug-allow>
+      <profile-allow>true</profile-allow>
+      <default-xquery-version>1.0-ml</default-xquery-version>
+      <multi-version-concurrency-control>contemporaneous</multi-version-concurrency-control>
+      <output-sgml-character-entities>none</output-sgml-character-entities>
+      <output-encoding>UTF-8</output-encoding>
+      <output-method>default</output-method>
+      <output-byte-order-mark>default</output-byte-order-mark>
+      <output-cdata-section-namespace-uri/>
+      <output-cdata-section-localname/>
+      <output-doctype-public/>
+      <output-doctype-system/>
+      <output-escape-uri-attributes>default</output-escape-uri-attributes>
+      <output-include-content-type>default</output-include-content-type>
+      <output-indent>default</output-indent>
+      <output-indent-untyped>default</output-indent-untyped>
+      <output-media-type/>
+      <output-normalization-form>none</output-normalization-form>
+      <output-omit-xml-declaration>default</output-omit-xml-declaration>
+      <output-standalone>omit</output-standalone>
+      <output-undeclare-prefixes>default</output-undeclare-prefixes>
+      <output-version/>
+      <output-include-default-attributes>default</output-include-default-attributes>
+      <error-handler/>
+      <schemas/>
+      <namespaces/>
+      <request-blackouts/>
+      <url-rewriter/>
+      <ssl-certificate-template>0</ssl-certificate-template>
+      <ssl-allow-sslv3>true</ssl-allow-sslv3>
+      <ssl-allow-tls>true</ssl-allow-tls>
+      <ssl-hostname/>
+      <ssl-ciphers>ALL:!LOW:@STRENGTH</ssl-ciphers>
+      <ssl-require-client-certificate>true</ssl-require-client-certificate>
+      <ssl-client-certificate-authorities/>
+    </package-http-properties>
+    <links>
+      <group-name>Default</group-name>
+      <database>logs</database>
+      <default-user>admin</default-user>
+    </links>
+  </package-http-server>
 </pkg:package>

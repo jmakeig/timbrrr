@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map:map xmlns:map="http://marklogic.com/xdmp/map" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <map:entry key="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.215 Safari/535.1">
-    <map:value><os_type>Macintosh</os_type></map:value>
+  <map:entry key="Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.2.22) Gecko/20110902 Firefox/3.6.22 GTB7.1">
+    <map:value><os_type>Windows</os_type></map:value>
     <map:value><agent_type>Browser</agent_type></map:value>
-    <map:value><agent_version>13.0.782.215</agent_version></map:value>
-    <map:value><agent_language/></map:value>
-    <map:value><agent_name>Chrome</agent_name></map:value>
-    <map:value><os_name>OS X</os_name></map:value>
-    <map:value><os_versionNumber>10_6_8</os_versionNumber></map:value>
+    <map:value><agent_version>3.6.22</agent_version></map:value>
+    <map:value><agent_language>English - United States</agent_language></map:value>
+    <map:value><agent_name>Firefox</agent_name></map:value>
+    <map:value><os_name>Windows XP</os_name></map:value>
+    <map:value><os_versionNumber/></map:value>
     <map:value><os_producerURL/></map:value>
-    <map:value><agent_languageTag/></map:value>
-    <map:value><os_versionName>Snow Leopard</os_versionName></map:value>
+    <map:value><agent_languageTag>en-US</agent_languageTag></map:value>
+    <map:value><os_versionName/></map:value>
     <map:value><linux_distibution>Null</linux_distibution></map:value>
     <map:value><os_producer/></map:value>
-    <map:value><agent_version_major>13</agent_version_major></map:value>
-    <map:value><agent_version_minor>0</agent_version_minor></map:value>
+    <map:value><agent_version_major>3</agent_version_major></map:value>
+    <map:value><agent_version_minor>6</agent_version_minor></map:value>
   </map:entry>
   <map:entry key="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/534.30 (KHTML, like Gecko) Chrome/12.0.742.100 Safari/534.30">
     <map:value><os_type>Macintosh</os_type></map:value>
@@ -504,38 +504,6 @@
     <map:value><agent_version_major>5</agent_version_major></map:value>
     <map:value><agent_version_minor>0</agent_version_minor></map:value>
   </map:entry>
-  <map:entry key="Mozilla/5.0 (Windows; U; Windows NT 6.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13">
-    <map:value><os_type>Windows</os_type></map:value>
-    <map:value><agent_type>Browser</agent_type></map:value>
-    <map:value><agent_version>3.6.13</agent_version></map:value>
-    <map:value><agent_language>English - Great Britain</agent_language></map:value>
-    <map:value><agent_name>Firefox</agent_name></map:value>
-    <map:value><os_name>Windows 7</os_name></map:value>
-    <map:value><os_versionNumber/></map:value>
-    <map:value><os_producerURL/></map:value>
-    <map:value><agent_languageTag>en-GB</agent_languageTag></map:value>
-    <map:value><os_versionName/></map:value>
-    <map:value><linux_distibution>Null</linux_distibution></map:value>
-    <map:value><os_producer/></map:value>
-    <map:value><agent_version_major>3</agent_version_major></map:value>
-    <map:value><agent_version_minor>6</agent_version_minor></map:value>
-  </map:entry>
-  <map:entry key="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.218 Safari/535.1">
-    <map:value><os_type>Macintosh</os_type></map:value>
-    <map:value><agent_type>Browser</agent_type></map:value>
-    <map:value><agent_version>13.0.782.218</agent_version></map:value>
-    <map:value><agent_language/></map:value>
-    <map:value><agent_name>Chrome</agent_name></map:value>
-    <map:value><os_name>OS X</os_name></map:value>
-    <map:value><os_versionNumber>10_6_8</os_versionNumber></map:value>
-    <map:value><os_producerURL/></map:value>
-    <map:value><agent_languageTag/></map:value>
-    <map:value><os_versionName>Snow Leopard</os_versionName></map:value>
-    <map:value><linux_distibution>Null</linux_distibution></map:value>
-    <map:value><os_producer/></map:value>
-    <map:value><agent_version_major>13</agent_version_major></map:value>
-    <map:value><agent_version_minor>0</agent_version_minor></map:value>
-  </map:entry>
   <map:entry key="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/14.0.835.187 Safari/535.1">
     <map:value><os_type>Windows</os_type></map:value>
     <map:value><agent_type>Browser</agent_type></map:value>
@@ -551,6 +519,38 @@
     <map:value><os_producer/></map:value>
     <map:value><agent_version_major>14</agent_version_major></map:value>
     <map:value><agent_version_minor>0</agent_version_minor></map:value>
+  </map:entry>
+  <map:entry key="Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.1.9) Gecko/20100315 Firefox/3.5.9">
+    <map:value><os_type>Windows</os_type></map:value>
+    <map:value><agent_type>Browser</agent_type></map:value>
+    <map:value><agent_version>3.5.9</agent_version></map:value>
+    <map:value><agent_language>English - United States</agent_language></map:value>
+    <map:value><agent_name>Firefox</agent_name></map:value>
+    <map:value><os_name>Windows XP</os_name></map:value>
+    <map:value><os_versionNumber/></map:value>
+    <map:value><os_producerURL/></map:value>
+    <map:value><agent_languageTag>en-US</agent_languageTag></map:value>
+    <map:value><os_versionName/></map:value>
+    <map:value><linux_distibution>Null</linux_distibution></map:value>
+    <map:value><os_producer/></map:value>
+    <map:value><agent_version_major>3</agent_version_major></map:value>
+    <map:value><agent_version_minor>5</agent_version_minor></map:value>
+  </map:entry>
+  <map:entry key="Mozilla/5.0 (Windows; U; Windows NT 6.1; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13">
+    <map:value><os_type>Windows</os_type></map:value>
+    <map:value><agent_type>Browser</agent_type></map:value>
+    <map:value><agent_version>3.6.13</agent_version></map:value>
+    <map:value><agent_language>English - Great Britain</agent_language></map:value>
+    <map:value><agent_name>Firefox</agent_name></map:value>
+    <map:value><os_name>Windows 7</os_name></map:value>
+    <map:value><os_versionNumber/></map:value>
+    <map:value><os_producerURL/></map:value>
+    <map:value><agent_languageTag>en-GB</agent_languageTag></map:value>
+    <map:value><os_versionName/></map:value>
+    <map:value><linux_distibution>Null</linux_distibution></map:value>
+    <map:value><os_producer/></map:value>
+    <map:value><agent_version_major>3</agent_version_major></map:value>
+    <map:value><agent_version_minor>6</agent_version_minor></map:value>
   </map:entry>
   <map:entry key="Mozilla/5.0 (Windows NT 5.1) AppleWebKit/534.30 (KHTML, like Gecko) Chrome/12.0.742.60 Safari/534.30">
     <map:value><os_type>Windows</os_type></map:value>
@@ -696,21 +696,21 @@
     <map:value><agent_version_major>8</agent_version_major></map:value>
     <map:value><agent_version_minor>0</agent_version_minor></map:value>
   </map:entry>
-  <map:entry key="Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.1.9) Gecko/20100315 Firefox/3.5.9">
-    <map:value><os_type>Windows</os_type></map:value>
+  <map:entry key="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.218 Safari/535.1">
+    <map:value><os_type>Macintosh</os_type></map:value>
     <map:value><agent_type>Browser</agent_type></map:value>
-    <map:value><agent_version>3.5.9</agent_version></map:value>
-    <map:value><agent_language>English - United States</agent_language></map:value>
-    <map:value><agent_name>Firefox</agent_name></map:value>
-    <map:value><os_name>Windows XP</os_name></map:value>
-    <map:value><os_versionNumber/></map:value>
+    <map:value><agent_version>13.0.782.218</agent_version></map:value>
+    <map:value><agent_language/></map:value>
+    <map:value><agent_name>Chrome</agent_name></map:value>
+    <map:value><os_name>OS X</os_name></map:value>
+    <map:value><os_versionNumber>10_6_8</os_versionNumber></map:value>
     <map:value><os_producerURL/></map:value>
-    <map:value><agent_languageTag>en-US</agent_languageTag></map:value>
-    <map:value><os_versionName/></map:value>
+    <map:value><agent_languageTag/></map:value>
+    <map:value><os_versionName>Snow Leopard</os_versionName></map:value>
     <map:value><linux_distibution>Null</linux_distibution></map:value>
     <map:value><os_producer/></map:value>
-    <map:value><agent_version_major>3</agent_version_major></map:value>
-    <map:value><agent_version_minor>5</agent_version_minor></map:value>
+    <map:value><agent_version_major>13</agent_version_major></map:value>
+    <map:value><agent_version_minor>0</agent_version_minor></map:value>
   </map:entry>
   <map:entry key="Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_7; en-us) AppleWebKit/533.21.1 (KHTML, like Gecko) Paparazzi!/0.5b5 (like Safari)">
     <map:value><os_type>Macintosh</os_type></map:value>
@@ -1226,38 +1226,6 @@
     <map:value><agent_version_major>5</agent_version_major></map:value>
     <map:value><agent_version_minor>0</agent_version_minor></map:value>
   </map:entry>
-  <map:entry key="Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.2) Gecko/20100115 Firefox/3.6">
-    <map:value><os_type>Windows</os_type></map:value>
-    <map:value><agent_type>Browser</agent_type></map:value>
-    <map:value><agent_version>3.6</agent_version></map:value>
-    <map:value><agent_language>English - United States</agent_language></map:value>
-    <map:value><agent_name>Firefox</agent_name></map:value>
-    <map:value><os_name>Windows XP</os_name></map:value>
-    <map:value><os_versionNumber/></map:value>
-    <map:value><os_producerURL/></map:value>
-    <map:value><agent_languageTag>en-US</agent_languageTag></map:value>
-    <map:value><os_versionName/></map:value>
-    <map:value><linux_distibution>Null</linux_distibution></map:value>
-    <map:value><os_producer/></map:value>
-    <map:value><agent_version_major>3</agent_version_major></map:value>
-    <map:value><agent_version_minor>6</agent_version_minor></map:value>
-  </map:entry>
-  <map:entry key="Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.1.5) Gecko/20091102 Firefox/3.5.5">
-    <map:value><os_type>Windows</os_type></map:value>
-    <map:value><agent_type>Browser</agent_type></map:value>
-    <map:value><agent_version>3.5.5</agent_version></map:value>
-    <map:value><agent_language>English - United States</agent_language></map:value>
-    <map:value><agent_name>Firefox</agent_name></map:value>
-    <map:value><os_name>Windows XP</os_name></map:value>
-    <map:value><os_versionNumber/></map:value>
-    <map:value><os_producerURL/></map:value>
-    <map:value><agent_languageTag>en-US</agent_languageTag></map:value>
-    <map:value><os_versionName/></map:value>
-    <map:value><linux_distibution>Null</linux_distibution></map:value>
-    <map:value><os_producer/></map:value>
-    <map:value><agent_version_major>3</agent_version_major></map:value>
-    <map:value><agent_version_minor>5</agent_version_minor></map:value>
-  </map:entry>
   <map:entry key="Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0; SLCC1; .NET CLR 2.0.50727; Media Center PC 5.0; .NET CLR 1.1.4322; Zune 2.0; .NET CLR 3.5.21022; .NET CLR 3.5.30729; FDM; .NET CLR 3.0.30618)">
     <map:value><os_type>Windows</os_type></map:value>
     <map:value><agent_type>Browser</agent_type></map:value>
@@ -1265,6 +1233,36 @@
     <map:value><agent_language/></map:value>
     <map:value><agent_name>Internet Explorer</agent_name></map:value>
     <map:value><os_name>Windows Vista</os_name></map:value>
+    <map:value><os_versionNumber/></map:value>
+    <map:value><os_producerURL/></map:value>
+    <map:value><agent_languageTag/></map:value>
+    <map:value><os_versionName/></map:value>
+    <map:value><linux_distibution>Null</linux_distibution></map:value>
+    <map:value><os_producer/></map:value>
+  </map:entry>
+  <map:entry key="Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; Trident/5.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.2; MS-RTC LM 8)">
+    <map:value><os_type>Windows</os_type></map:value>
+    <map:value><agent_type>Browser</agent_type></map:value>
+    <map:value><agent_version>9.0</agent_version></map:value>
+    <map:value><agent_language/></map:value>
+    <map:value><agent_name>Internet Explorer</agent_name></map:value>
+    <map:value><os_name>Windows 7</os_name></map:value>
+    <map:value><os_versionNumber/></map:value>
+    <map:value><os_producerURL/></map:value>
+    <map:value><agent_languageTag/></map:value>
+    <map:value><os_versionName/></map:value>
+    <map:value><linux_distibution>Null</linux_distibution></map:value>
+    <map:value><os_producer/></map:value>
+    <map:value><agent_version_major>9</agent_version_major></map:value>
+    <map:value><agent_version_minor>0</agent_version_minor></map:value>
+  </map:entry>
+  <map:entry key="Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; MS-RTC LM 8; AskTbORJ/5.13.1.18107)">
+    <map:value><os_type>Windows</os_type></map:value>
+    <map:value><agent_type>Browser</agent_type></map:value>
+    <map:value><agent_version>8.0</agent_version></map:value>
+    <map:value><agent_language/></map:value>
+    <map:value><agent_name>Internet Explorer</agent_name></map:value>
+    <map:value><os_name>Windows XP</os_name></map:value>
     <map:value><os_versionNumber/></map:value>
     <map:value><os_producerURL/></map:value>
     <map:value><agent_languageTag/></map:value>
@@ -1288,21 +1286,21 @@
     <map:value><agent_version_major>8</agent_version_major></map:value>
     <map:value><agent_version_minor>0</agent_version_minor></map:value>
   </map:entry>
-  <map:entry key="Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; Trident/5.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.2; MS-RTC LM 8)">
+  <map:entry key="Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.2) Gecko/20100115 Firefox/3.6">
     <map:value><os_type>Windows</os_type></map:value>
     <map:value><agent_type>Browser</agent_type></map:value>
-    <map:value><agent_version>9.0</agent_version></map:value>
-    <map:value><agent_language/></map:value>
-    <map:value><agent_name>Internet Explorer</agent_name></map:value>
-    <map:value><os_name>Windows 7</os_name></map:value>
+    <map:value><agent_version>3.6</agent_version></map:value>
+    <map:value><agent_language>English - United States</agent_language></map:value>
+    <map:value><agent_name>Firefox</agent_name></map:value>
+    <map:value><os_name>Windows XP</os_name></map:value>
     <map:value><os_versionNumber/></map:value>
     <map:value><os_producerURL/></map:value>
-    <map:value><agent_languageTag/></map:value>
+    <map:value><agent_languageTag>en-US</agent_languageTag></map:value>
     <map:value><os_versionName/></map:value>
     <map:value><linux_distibution>Null</linux_distibution></map:value>
     <map:value><os_producer/></map:value>
-    <map:value><agent_version_major>9</agent_version_major></map:value>
-    <map:value><agent_version_minor>0</agent_version_minor></map:value>
+    <map:value><agent_version_major>3</agent_version_major></map:value>
+    <map:value><agent_version_minor>6</agent_version_minor></map:value>
   </map:entry>
   <map:entry key="Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0) Gecko/20100101 Firefox/6.0">
     <map:value><os_type>Windows</os_type></map:value>
@@ -1320,19 +1318,21 @@
     <map:value><agent_version_major>6</agent_version_major></map:value>
     <map:value><agent_version_minor>0</agent_version_minor></map:value>
   </map:entry>
-  <map:entry key="Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; MS-RTC LM 8; AskTbORJ/5.13.1.18107)">
+  <map:entry key="Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.1.5) Gecko/20091102 Firefox/3.5.5">
     <map:value><os_type>Windows</os_type></map:value>
     <map:value><agent_type>Browser</agent_type></map:value>
-    <map:value><agent_version>8.0</agent_version></map:value>
-    <map:value><agent_language/></map:value>
-    <map:value><agent_name>Internet Explorer</agent_name></map:value>
+    <map:value><agent_version>3.5.5</agent_version></map:value>
+    <map:value><agent_language>English - United States</agent_language></map:value>
+    <map:value><agent_name>Firefox</agent_name></map:value>
     <map:value><os_name>Windows XP</os_name></map:value>
     <map:value><os_versionNumber/></map:value>
     <map:value><os_producerURL/></map:value>
-    <map:value><agent_languageTag/></map:value>
+    <map:value><agent_languageTag>en-US</agent_languageTag></map:value>
     <map:value><os_versionName/></map:value>
     <map:value><linux_distibution>Null</linux_distibution></map:value>
     <map:value><os_producer/></map:value>
+    <map:value><agent_version_major>3</agent_version_major></map:value>
+    <map:value><agent_version_minor>5</agent_version_minor></map:value>
   </map:entry>
   <map:entry key="Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; GTB6.6; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30; .NET CLR 3.0.04506.648; InfoPath.2; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; MS-RTC LM 8; IE0006_ver1;EN_US)">
     <map:value><os_type>Windows</os_type></map:value>
@@ -2522,6 +2522,64 @@
     <map:value><agent_version_major>7</agent_version_major></map:value>
     <map:value><agent_version_minor>0</agent_version_minor></map:value>
   </map:entry>
+  <map:entry key="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.36 Safari/535.7">
+    <map:value><os_type>Linux</os_type></map:value>
+    <map:value><agent_type>Browser</agent_type></map:value>
+    <map:value><agent_version>16.0.912.36</agent_version></map:value>
+    <map:value><agent_language/></map:value>
+    <map:value><agent_name>Chrome</agent_name></map:value>
+    <map:value><os_name>Linux</os_name></map:value>
+    <map:value><os_versionNumber/></map:value>
+    <map:value><os_producerURL/></map:value>
+    <map:value><agent_languageTag/></map:value>
+    <map:value><os_versionName/></map:value>
+    <map:value><linux_distibution>Null</linux_distibution></map:value>
+    <map:value><os_producer/></map:value>
+  </map:entry>
+  <map:entry key="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.41 Safari/535.7">
+    <map:value><os_type>Windows</os_type></map:value>
+    <map:value><agent_type>Browser</agent_type></map:value>
+    <map:value><agent_version>16.0.912.41</agent_version></map:value>
+    <map:value><agent_language/></map:value>
+    <map:value><agent_name>Chrome</agent_name></map:value>
+    <map:value><os_name>Windows 7</os_name></map:value>
+    <map:value><os_versionNumber/></map:value>
+    <map:value><os_producerURL/></map:value>
+    <map:value><agent_languageTag/></map:value>
+    <map:value><os_versionName/></map:value>
+    <map:value><linux_distibution>Null</linux_distibution></map:value>
+    <map:value><os_producer/></map:value>
+  </map:entry>
+  <map:entry key="Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.2.12) Gecko/20101027 Ubuntu/10.10 (maverick) Firefox/3.6.12">
+    <map:value><os_type>Linux</os_type></map:value>
+    <map:value><agent_type>Browser</agent_type></map:value>
+    <map:value><agent_version>3.6.12</agent_version></map:value>
+    <map:value><agent_language>English - United States</agent_language></map:value>
+    <map:value><agent_name>Firefox</agent_name></map:value>
+    <map:value><os_name>Linux</os_name></map:value>
+    <map:value><os_versionNumber/></map:value>
+    <map:value><os_producerURL/></map:value>
+    <map:value><agent_languageTag>en-US</agent_languageTag></map:value>
+    <map:value><os_versionName/></map:value>
+    <map:value><linux_distibution>Ubuntu</linux_distibution></map:value>
+    <map:value><os_producer/></map:value>
+    <map:value><agent_version_major>3</agent_version_major></map:value>
+    <map:value><agent_version_minor>6</agent_version_minor></map:value>
+  </map:entry>
+  <map:entry key="Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; GTB7.2; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.3; .NET4.0C; AskTbMMG/5.12.2.16749; MANM; Creative AutoUpdate v1.40.01)">
+    <map:value><os_type>Windows</os_type></map:value>
+    <map:value><agent_type>Browser</agent_type></map:value>
+    <map:value><agent_version>8.0</agent_version></map:value>
+    <map:value><agent_language/></map:value>
+    <map:value><agent_name>Internet Explorer</agent_name></map:value>
+    <map:value><os_name>Windows 7</os_name></map:value>
+    <map:value><os_versionNumber/></map:value>
+    <map:value><os_producerURL/></map:value>
+    <map:value><agent_languageTag/></map:value>
+    <map:value><os_versionName/></map:value>
+    <map:value><linux_distibution>Null</linux_distibution></map:value>
+    <map:value><os_producer/></map:value>
+  </map:entry>
   <map:entry key="Mozilla/5.0 (Windows; U; Windows NT 5.1; zh-CN; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13">
     <map:value><os_type>Windows</os_type></map:value>
     <map:value><agent_type>Browser</agent_type></map:value>
@@ -2538,6 +2596,22 @@
     <map:value><agent_version_major>3</agent_version_major></map:value>
     <map:value><agent_version_minor>6</agent_version_minor></map:value>
   </map:entry>
+  <map:entry key="Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0; Trident/4.0; FCTB100275; SLCC1; .NET CLR 2.0.50727; Media Center PC 5.0; .NET CLR 1.1.4322; .NET CLR 3.5.30729; .NET CLR 3.0.30618)">
+    <map:value><os_type>Windows</os_type></map:value>
+    <map:value><agent_type>Browser</agent_type></map:value>
+    <map:value><agent_version>8.0</agent_version></map:value>
+    <map:value><agent_language/></map:value>
+    <map:value><agent_name>Internet Explorer</agent_name></map:value>
+    <map:value><os_name>Windows Vista</os_name></map:value>
+    <map:value><os_versionNumber/></map:value>
+    <map:value><os_producerURL/></map:value>
+    <map:value><agent_languageTag/></map:value>
+    <map:value><os_versionName/></map:value>
+    <map:value><linux_distibution>Null</linux_distibution></map:value>
+    <map:value><os_producer/></map:value>
+    <map:value><agent_version_major>8</agent_version_major></map:value>
+    <map:value><agent_version_minor>0</agent_version_minor></map:value>
+  </map:entry>
   <map:entry key="Mozilla/5.0 (Windows; U; Windows NT 5.2; en-GB; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13">
     <map:value><os_type>Windows</os_type></map:value>
     <map:value><agent_type>Browser</agent_type></map:value>
@@ -2553,6 +2627,22 @@
     <map:value><os_producer/></map:value>
     <map:value><agent_version_major>3</agent_version_major></map:value>
     <map:value><agent_version_minor>6</agent_version_minor></map:value>
+  </map:entry>
+  <map:entry key="Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.3; .NET4.0C; MS-RTC LM 8)">
+    <map:value><os_type>Windows</os_type></map:value>
+    <map:value><agent_type>Browser</agent_type></map:value>
+    <map:value><agent_version>8.0</agent_version></map:value>
+    <map:value><agent_language/></map:value>
+    <map:value><agent_name>Internet Explorer</agent_name></map:value>
+    <map:value><os_name>Windows 7</os_name></map:value>
+    <map:value><os_versionNumber/></map:value>
+    <map:value><os_producerURL/></map:value>
+    <map:value><agent_languageTag/></map:value>
+    <map:value><os_versionName/></map:value>
+    <map:value><linux_distibution>Null</linux_distibution></map:value>
+    <map:value><os_producer/></map:value>
+    <map:value><agent_version_major>8</agent_version_major></map:value>
+    <map:value><agent_version_minor>0</agent_version_minor></map:value>
   </map:entry>
   <map:entry key="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:7.0a2) Gecko/20110706 Firefox/7.0a2">
     <map:value><os_type>Macintosh</os_type></map:value>
@@ -2617,100 +2707,6 @@
     <map:value><agent_version_major>15</agent_version_major></map:value>
     <map:value><agent_version_minor>0</agent_version_minor></map:value>
   </map:entry>
-  <map:entry key="Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.2.14) Gecko/20110301 Fedora/3.6.14-1.fc13 Firefox/3.6.14">
-    <map:value><os_type>Linux</os_type></map:value>
-    <map:value><agent_type>Browser</agent_type></map:value>
-    <map:value><agent_version>3.6.14</agent_version></map:value>
-    <map:value><agent_language>English - United States</agent_language></map:value>
-    <map:value><agent_name>Firefox</agent_name></map:value>
-    <map:value><os_name>Linux</os_name></map:value>
-    <map:value><os_versionNumber/></map:value>
-    <map:value><os_producerURL/></map:value>
-    <map:value><agent_languageTag>en-US</agent_languageTag></map:value>
-    <map:value><os_versionName/></map:value>
-    <map:value><linux_distibution>Fedora</linux_distibution></map:value>
-    <map:value><os_producer/></map:value>
-    <map:value><agent_version_major>3</agent_version_major></map:value>
-    <map:value><agent_version_minor>6</agent_version_minor></map:value>
-  </map:entry>
-  <map:entry key="Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)">
-    <map:value><os_type>Windows</os_type></map:value>
-    <map:value><agent_type>Browser</agent_type></map:value>
-    <map:value><agent_version>8.0</agent_version></map:value>
-    <map:value><agent_language/></map:value>
-    <map:value><agent_name>Internet Explorer</agent_name></map:value>
-    <map:value><os_name>Windows XP</os_name></map:value>
-    <map:value><os_versionNumber/></map:value>
-    <map:value><os_producerURL/></map:value>
-    <map:value><agent_languageTag/></map:value>
-    <map:value><os_versionName/></map:value>
-    <map:value><linux_distibution>Null</linux_distibution></map:value>
-    <map:value><os_producer/></map:value>
-    <map:value><agent_version_major>8</agent_version_major></map:value>
-    <map:value><agent_version_minor>0</agent_version_minor></map:value>
-  </map:entry>
-  <map:entry key="Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0; Trident/4.0; FCTB100275; SLCC1; .NET CLR 2.0.50727; Media Center PC 5.0; .NET CLR 1.1.4322; .NET CLR 3.5.30729; .NET CLR 3.0.30618)">
-    <map:value><os_type>Windows</os_type></map:value>
-    <map:value><agent_type>Browser</agent_type></map:value>
-    <map:value><agent_version>8.0</agent_version></map:value>
-    <map:value><agent_language/></map:value>
-    <map:value><agent_name>Internet Explorer</agent_name></map:value>
-    <map:value><os_name>Windows Vista</os_name></map:value>
-    <map:value><os_versionNumber/></map:value>
-    <map:value><os_producerURL/></map:value>
-    <map:value><agent_languageTag/></map:value>
-    <map:value><os_versionName/></map:value>
-    <map:value><linux_distibution>Null</linux_distibution></map:value>
-    <map:value><os_producer/></map:value>
-    <map:value><agent_version_major>8</agent_version_major></map:value>
-    <map:value><agent_version_minor>0</agent_version_minor></map:value>
-  </map:entry>
-  <map:entry key="Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.2.12) Gecko/20101027 Ubuntu/10.10 (maverick) Firefox/3.6.12">
-    <map:value><os_type>Linux</os_type></map:value>
-    <map:value><agent_type>Browser</agent_type></map:value>
-    <map:value><agent_version>3.6.12</agent_version></map:value>
-    <map:value><agent_language>English - United States</agent_language></map:value>
-    <map:value><agent_name>Firefox</agent_name></map:value>
-    <map:value><os_name>Linux</os_name></map:value>
-    <map:value><os_versionNumber/></map:value>
-    <map:value><os_producerURL/></map:value>
-    <map:value><agent_languageTag>en-US</agent_languageTag></map:value>
-    <map:value><os_versionName/></map:value>
-    <map:value><linux_distibution>Ubuntu</linux_distibution></map:value>
-    <map:value><os_producer/></map:value>
-    <map:value><agent_version_major>3</agent_version_major></map:value>
-    <map:value><agent_version_minor>6</agent_version_minor></map:value>
-  </map:entry>
-  <map:entry key="Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.3; .NET4.0C; MS-RTC LM 8)">
-    <map:value><os_type>Windows</os_type></map:value>
-    <map:value><agent_type>Browser</agent_type></map:value>
-    <map:value><agent_version>8.0</agent_version></map:value>
-    <map:value><agent_language/></map:value>
-    <map:value><agent_name>Internet Explorer</agent_name></map:value>
-    <map:value><os_name>Windows 7</os_name></map:value>
-    <map:value><os_versionNumber/></map:value>
-    <map:value><os_producerURL/></map:value>
-    <map:value><agent_languageTag/></map:value>
-    <map:value><os_versionName/></map:value>
-    <map:value><linux_distibution>Null</linux_distibution></map:value>
-    <map:value><os_producer/></map:value>
-    <map:value><agent_version_major>8</agent_version_major></map:value>
-    <map:value><agent_version_minor>0</agent_version_minor></map:value>
-  </map:entry>
-  <map:entry key="Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; GTB7.2; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.3; .NET4.0C; AskTbMMG/5.12.2.16749; MANM; Creative AutoUpdate v1.40.01)">
-    <map:value><os_type>Windows</os_type></map:value>
-    <map:value><agent_type>Browser</agent_type></map:value>
-    <map:value><agent_version>8.0</agent_version></map:value>
-    <map:value><agent_language/></map:value>
-    <map:value><agent_name>Internet Explorer</agent_name></map:value>
-    <map:value><os_name>Windows 7</os_name></map:value>
-    <map:value><os_versionNumber/></map:value>
-    <map:value><os_producerURL/></map:value>
-    <map:value><agent_languageTag/></map:value>
-    <map:value><os_versionName/></map:value>
-    <map:value><linux_distibution>Null</linux_distibution></map:value>
-    <map:value><os_producer/></map:value>
-  </map:entry>
   <map:entry key="Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US) AppleWebKit/534.13 (KHTML, like Gecko) Chrome/9.0.597.98 Safari/534.13">
     <map:value><os_type>Windows</os_type></map:value>
     <map:value><agent_type>Browser</agent_type></map:value>
@@ -2727,19 +2723,21 @@
     <map:value><agent_version_major>9</agent_version_major></map:value>
     <map:value><agent_version_minor>0</agent_version_minor></map:value>
   </map:entry>
-  <map:entry key="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.41 Safari/535.7">
-    <map:value><os_type>Windows</os_type></map:value>
+  <map:entry key="Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.2.14) Gecko/20110301 Fedora/3.6.14-1.fc13 Firefox/3.6.14">
+    <map:value><os_type>Linux</os_type></map:value>
     <map:value><agent_type>Browser</agent_type></map:value>
-    <map:value><agent_version>16.0.912.41</agent_version></map:value>
-    <map:value><agent_language/></map:value>
-    <map:value><agent_name>Chrome</agent_name></map:value>
-    <map:value><os_name>Windows 7</os_name></map:value>
+    <map:value><agent_version>3.6.14</agent_version></map:value>
+    <map:value><agent_language>English - United States</agent_language></map:value>
+    <map:value><agent_name>Firefox</agent_name></map:value>
+    <map:value><os_name>Linux</os_name></map:value>
     <map:value><os_versionNumber/></map:value>
     <map:value><os_producerURL/></map:value>
-    <map:value><agent_languageTag/></map:value>
+    <map:value><agent_languageTag>en-US</agent_languageTag></map:value>
     <map:value><os_versionName/></map:value>
-    <map:value><linux_distibution>Null</linux_distibution></map:value>
+    <map:value><linux_distibution>Fedora</linux_distibution></map:value>
     <map:value><os_producer/></map:value>
+    <map:value><agent_version_major>3</agent_version_major></map:value>
+    <map:value><agent_version_minor>6</agent_version_minor></map:value>
   </map:entry>
   <map:entry key="Mozilla/5.0 (X11; Linux x86_64; rv:8.0) Gecko/20100101 Firefox/8.0">
     <map:value><os_type>Linux</os_type></map:value>
@@ -2771,19 +2769,21 @@
     <map:value><agent_version_major>3</agent_version_major></map:value>
     <map:value><agent_version_minor>6</agent_version_minor></map:value>
   </map:entry>
-  <map:entry key="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.36 Safari/535.7">
-    <map:value><os_type>Linux</os_type></map:value>
+  <map:entry key="Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)">
+    <map:value><os_type>Windows</os_type></map:value>
     <map:value><agent_type>Browser</agent_type></map:value>
-    <map:value><agent_version>16.0.912.36</agent_version></map:value>
+    <map:value><agent_version>8.0</agent_version></map:value>
     <map:value><agent_language/></map:value>
-    <map:value><agent_name>Chrome</agent_name></map:value>
-    <map:value><os_name>Linux</os_name></map:value>
+    <map:value><agent_name>Internet Explorer</agent_name></map:value>
+    <map:value><os_name>Windows XP</os_name></map:value>
     <map:value><os_versionNumber/></map:value>
     <map:value><os_producerURL/></map:value>
     <map:value><agent_languageTag/></map:value>
     <map:value><os_versionName/></map:value>
     <map:value><linux_distibution>Null</linux_distibution></map:value>
     <map:value><os_producer/></map:value>
+    <map:value><agent_version_major>8</agent_version_major></map:value>
+    <map:value><agent_version_minor>0</agent_version_minor></map:value>
   </map:entry>
   <map:entry key="Mozilla/5.0 (Windows NT 5.1) AppleWebKit/534.30 (KHTML, like Gecko) Chrome/12.0.742.112 Safari/534.30">
     <map:value><os_type>Windows</os_type></map:value>
@@ -5485,29 +5485,13 @@
     <map:value><agent_version_major>3</agent_version_major></map:value>
     <map:value><agent_version_minor>6</agent_version_minor></map:value>
   </map:entry>
-  <map:entry key="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.30 (KHTML, like Gecko) Chrome/12.0.742.12 Safari/534.30">
-    <map:value><os_type>Windows</os_type></map:value>
-    <map:value><agent_type>Browser</agent_type></map:value>
-    <map:value><agent_version>12.0.742.12</agent_version></map:value>
-    <map:value><agent_language/></map:value>
-    <map:value><agent_name>Chrome</agent_name></map:value>
-    <map:value><os_name>Windows 7</os_name></map:value>
-    <map:value><os_versionNumber/></map:value>
-    <map:value><os_producerURL/></map:value>
-    <map:value><agent_languageTag/></map:value>
-    <map:value><os_versionName/></map:value>
-    <map:value><linux_distibution>Null</linux_distibution></map:value>
-    <map:value><os_producer/></map:value>
-    <map:value><agent_version_major>12</agent_version_major></map:value>
-    <map:value><agent_version_minor>0</agent_version_minor></map:value>
-  </map:entry>
-  <map:entry key="Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; MS-RTC LM 8; .NET4.0C; .NET4.0E)">
+  <map:entry key="Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.2; WOW64; Trident/4.0; GTB6.6; QQDownload 677; InfoPath.2; .NET CLR 1.1.4322)">
     <map:value><os_type>Windows</os_type></map:value>
     <map:value><agent_type>Browser</agent_type></map:value>
     <map:value><agent_version>8.0</agent_version></map:value>
     <map:value><agent_language/></map:value>
     <map:value><agent_name>Internet Explorer</agent_name></map:value>
-    <map:value><os_name>Windows 7</os_name></map:value>
+    <map:value><os_name>Windows Server 2003</os_name></map:value>
     <map:value><os_versionNumber/></map:value>
     <map:value><os_producerURL/></map:value>
     <map:value><agent_languageTag/></map:value>
@@ -5515,6 +5499,22 @@
     <map:value><linux_distibution>Null</linux_distibution></map:value>
     <map:value><os_producer/></map:value>
     <map:value><agent_version_major>8</agent_version_major></map:value>
+    <map:value><agent_version_minor>0</agent_version_minor></map:value>
+  </map:entry>
+  <map:entry key="Mozilla/5.0 (Windows NT 6.1; rv:6.0.1) Gecko/20100101 Firefox/6.0.1">
+    <map:value><os_type>Windows</os_type></map:value>
+    <map:value><agent_type>Browser</agent_type></map:value>
+    <map:value><agent_version>6.0.1</agent_version></map:value>
+    <map:value><agent_language/></map:value>
+    <map:value><agent_name>Firefox</agent_name></map:value>
+    <map:value><os_name>Windows 7</os_name></map:value>
+    <map:value><os_versionNumber/></map:value>
+    <map:value><os_producerURL/></map:value>
+    <map:value><agent_languageTag/></map:value>
+    <map:value><os_versionName/></map:value>
+    <map:value><linux_distibution>Null</linux_distibution></map:value>
+    <map:value><os_producer/></map:value>
+    <map:value><agent_version_major>6</agent_version_major></map:value>
     <map:value><agent_version_minor>0</agent_version_minor></map:value>
   </map:entry>
   <map:entry key="Mozilla/5.0 (X11; U; Linux x86_64; en-US) AppleWebKit/533.4 (KHTML, like Gecko) Chrome/5.0.375.86 Safari/533.4">
@@ -5549,21 +5549,21 @@
     <map:value><agent_version_major>3</agent_version_major></map:value>
     <map:value><agent_version_minor>6</agent_version_minor></map:value>
   </map:entry>
-  <map:entry key="Mozilla/5.0 (Windows NT 6.1; rv:6.0.1) Gecko/20100101 Firefox/6.0.1">
+  <map:entry key="Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.1.11) Gecko/20100701 Firefox/3.5.11">
     <map:value><os_type>Windows</os_type></map:value>
     <map:value><agent_type>Browser</agent_type></map:value>
-    <map:value><agent_version>6.0.1</agent_version></map:value>
-    <map:value><agent_language/></map:value>
+    <map:value><agent_version>3.5.11</agent_version></map:value>
+    <map:value><agent_language>English - United States</agent_language></map:value>
     <map:value><agent_name>Firefox</agent_name></map:value>
-    <map:value><os_name>Windows 7</os_name></map:value>
+    <map:value><os_name>Windows XP</os_name></map:value>
     <map:value><os_versionNumber/></map:value>
     <map:value><os_producerURL/></map:value>
-    <map:value><agent_languageTag/></map:value>
+    <map:value><agent_languageTag>en-US</agent_languageTag></map:value>
     <map:value><os_versionName/></map:value>
     <map:value><linux_distibution>Null</linux_distibution></map:value>
     <map:value><os_producer/></map:value>
-    <map:value><agent_version_major>6</agent_version_major></map:value>
-    <map:value><agent_version_minor>0</agent_version_minor></map:value>
+    <map:value><agent_version_major>3</agent_version_major></map:value>
+    <map:value><agent_version_minor>5</agent_version_minor></map:value>
   </map:entry>
   <map:entry key="Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US; rv:1.9.1) Gecko/20090624 Firefox/3.5 (.NET CLR 3.5.30729)">
     <map:value><os_type>Windows</os_type></map:value>
@@ -5597,20 +5597,20 @@
     <map:value><agent_version_major>8</agent_version_major></map:value>
     <map:value><agent_version_minor>0</agent_version_minor></map:value>
   </map:entry>
-  <map:entry key="Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.2; WOW64; Trident/4.0; GTB6.6; QQDownload 677; InfoPath.2; .NET CLR 1.1.4322)">
+  <map:entry key="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.30 (KHTML, like Gecko) Chrome/12.0.742.12 Safari/534.30">
     <map:value><os_type>Windows</os_type></map:value>
     <map:value><agent_type>Browser</agent_type></map:value>
-    <map:value><agent_version>8.0</agent_version></map:value>
+    <map:value><agent_version>12.0.742.12</agent_version></map:value>
     <map:value><agent_language/></map:value>
-    <map:value><agent_name>Internet Explorer</agent_name></map:value>
-    <map:value><os_name>Windows Server 2003</os_name></map:value>
+    <map:value><agent_name>Chrome</agent_name></map:value>
+    <map:value><os_name>Windows 7</os_name></map:value>
     <map:value><os_versionNumber/></map:value>
     <map:value><os_producerURL/></map:value>
     <map:value><agent_languageTag/></map:value>
     <map:value><os_versionName/></map:value>
     <map:value><linux_distibution>Null</linux_distibution></map:value>
     <map:value><os_producer/></map:value>
-    <map:value><agent_version_major>8</agent_version_major></map:value>
+    <map:value><agent_version_major>12</agent_version_major></map:value>
     <map:value><agent_version_minor>0</agent_version_minor></map:value>
   </map:entry>
   <map:entry key="Mozilla/5.0 (X11; U; Linux x86_64; en-US) AppleWebKit/534.10 (KHTML, like Gecko) Chrome/8.0.552.237 Safari/534.10">
@@ -5645,21 +5645,21 @@
     <map:value><agent_version_major>8</agent_version_major></map:value>
     <map:value><agent_version_minor>0</agent_version_minor></map:value>
   </map:entry>
-  <map:entry key="Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.1.11) Gecko/20100701 Firefox/3.5.11">
+  <map:entry key="Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; MS-RTC LM 8; .NET4.0C; .NET4.0E)">
     <map:value><os_type>Windows</os_type></map:value>
     <map:value><agent_type>Browser</agent_type></map:value>
-    <map:value><agent_version>3.5.11</agent_version></map:value>
-    <map:value><agent_language>English - United States</agent_language></map:value>
-    <map:value><agent_name>Firefox</agent_name></map:value>
-    <map:value><os_name>Windows XP</os_name></map:value>
+    <map:value><agent_version>8.0</agent_version></map:value>
+    <map:value><agent_language/></map:value>
+    <map:value><agent_name>Internet Explorer</agent_name></map:value>
+    <map:value><os_name>Windows 7</os_name></map:value>
     <map:value><os_versionNumber/></map:value>
     <map:value><os_producerURL/></map:value>
-    <map:value><agent_languageTag>en-US</agent_languageTag></map:value>
+    <map:value><agent_languageTag/></map:value>
     <map:value><os_versionName/></map:value>
     <map:value><linux_distibution>Null</linux_distibution></map:value>
     <map:value><os_producer/></map:value>
-    <map:value><agent_version_major>3</agent_version_major></map:value>
-    <map:value><agent_version_minor>5</agent_version_minor></map:value>
+    <map:value><agent_version_major>8</agent_version_major></map:value>
+    <map:value><agent_version_minor>0</agent_version_minor></map:value>
   </map:entry>
   <map:entry key="Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.2.18) Gecko/20110622 CentOS/3.6-1.el5.centos Firefox/3.6.18">
     <map:value><os_type>Linux</os_type></map:value>
@@ -23230,20 +23230,20 @@
     <map:value><agent_version_major>8</agent_version_major></map:value>
     <map:value><agent_version_minor>0</agent_version_minor></map:value>
   </map:entry>
-  <map:entry key="Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.2.22) Gecko/20110902 Firefox/3.6.22 GTB7.1">
-    <map:value><os_type>Windows</os_type></map:value>
+  <map:entry key="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.215 Safari/535.1">
+    <map:value><os_type>Macintosh</os_type></map:value>
     <map:value><agent_type>Browser</agent_type></map:value>
-    <map:value><agent_version>3.6.22</agent_version></map:value>
-    <map:value><agent_language>English - United States</agent_language></map:value>
-    <map:value><agent_name>Firefox</agent_name></map:value>
-    <map:value><os_name>Windows XP</os_name></map:value>
-    <map:value><os_versionNumber/></map:value>
+    <map:value><agent_version>13.0.782.215</agent_version></map:value>
+    <map:value><agent_language/></map:value>
+    <map:value><agent_name>Chrome</agent_name></map:value>
+    <map:value><os_name>OS X</os_name></map:value>
+    <map:value><os_versionNumber>10_6_8</os_versionNumber></map:value>
     <map:value><os_producerURL/></map:value>
-    <map:value><agent_languageTag>en-US</agent_languageTag></map:value>
-    <map:value><os_versionName/></map:value>
+    <map:value><agent_languageTag/></map:value>
+    <map:value><os_versionName>Snow Leopard</os_versionName></map:value>
     <map:value><linux_distibution>Null</linux_distibution></map:value>
     <map:value><os_producer/></map:value>
-    <map:value><agent_version_major>3</agent_version_major></map:value>
-    <map:value><agent_version_minor>6</agent_version_minor></map:value>
+    <map:value><agent_version_major>13</agent_version_major></map:value>
+    <map:value><agent_version_minor>0</agent_version_minor></map:value>
   </map:entry>
 </map:map>
