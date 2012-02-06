@@ -1,4 +1,8 @@
 xquery version "1.0-ml";
+(:
+ : Parses out user_agent strings and calculates major and minor version numbers.
+ : Updates the UA map in place and outputs the updated version in a separate statement.
+ :)
 declare namespace local="local";
 let $uas := map:map(doc("/user-agents.map")/element())
 let $_ := for $k in map:keys($uas)
