@@ -31,7 +31,7 @@ return
 </head>
 <body>
   <header>
-    <h1><a href="/">server.marklogic.com</a></h1>
+    <h1><a href="/{if($b and $e) then concat('?b=',$b,'&amp;e=',$e) else()}">server.marklogic.com</a></h1>
     <!--<div class="stats">
       <div>From {format-dateTime($min, "[Y0001]-[M01]-[D01] [H01]:[m01]:[s01] [z]", "en", (), ())}</div>
       <div>to {format-dateTime($max, "[Y0001]-[M01]-[D01] [H01]:[m01]:[s01] [z]", "en", (), ())}</div>
