@@ -1,10 +1,15 @@
 xquery version "1.0-ml";
+if(exists(doc("/user-agents.map"))) then () else xdmp:document-insert("/user-agents.map", <a>map:map()</a>/*)
+;
 declare namespace s="http://www.w3.org/2009/xpath-functions/analyze-string";
 declare namespace local="local";
 
+declare variable $COLLECTION as xs:string := "/tickets/ticket/13903477104259455555";
 declare variable $ua-map as map:map := map:map(doc("/user-agents.map")/*);
 
 declare function local:get-user-agent($raw as xs:string?) as element()* {
+  (:xdmp:log($raw),:)
+  (:xdmp:log(xdmp:quote(map:get($ua-map, $raw))),:)
   map:get($ua-map, $raw)
 (:
   let $m as map:map* := xdmp:from-json(xdmp:http-get(concat("http://www.useragentstring.com/?uas=", xdmp:url-encode($raw), "&amp;getJSON=all"))[2])
@@ -38,13 +43,13 @@ declare function local:day-of-week($date as xs:anyAtomicType?)  as xs:integer? {
   else xs:integer((xs:date($date) - xs:date('1901-01-06')) div xs:dayTimeDuration('P1D')) mod 7
 };
 
-(:let $d := doc("/raw/access_log.2010-12-27-00_00"):)
-for $d in collection("raw")
+for $d in (collection($COLLECTION))[201 to 500]
 return
   let $ls := tokenize($d, "\n")
   let $re := '^([\d.]+) (\S+) (\S+) \[([\w:/]+\s[+\-]\d{4})\] "(.+?)" (\d{3}) ([\-\d]+) "([^"]+)" "([^"]+)"$'
   for $l as xs:string at $i in $ls
     let $as := analyze-string($l, $re)
+
     let $timestamp := local:parse-dateTime($as//s:group[@nr eq 4]/string(.))
     let $request := $as//s:group[@nr eq 5]/string(.)
     where string-length($l) gt 0
@@ -66,3 +71,30 @@ return
         </log>, (xdmp:default-permissions()), ("processed")
       )
     )
+(:
+;
+declare namespace local="local";
+
+declare function local:get-user-agent($raw as xs:string?) as element()* {
+  if(empty($raw) or "" eq $raw) then () else
+    let $url := concat("http://www.useragentstring.com/?uas=", xdmp:url-encode($raw), "&amp;getJSON=all")
+    let $_ := xdmp:log(concat("Getting UA information from " , $url))
+    let $m as map:map* := xdmp:from-json(xdmp:http-get($url)[2])
+    for $k in map:keys($m)
+      return element {$k} { map:get($m, $k)}
+};
+
+let $map := map:map(doc("/user-agents.map")/*)
+let $_ := for $ua in distinct-values(collection("processed")//userAgent/@raw)
+return 
+  if(empty(map:get($map, $ua))) then
+    map:put($map, $ua, local:get-user-agent($ua))
+  else (
+    xdmp:log(concat("Already have UA for ", $ua))
+  )
+return xdmp:document-insert("/user-agents.map", document {$map})
+;
+count(doc("/user-agents.map")//map:entry),
+count(distinct-values(collection("processed")//userAgent/@raw)),
+xdmp:save("/Users/jmakeig/tmp/user-agents.map.xml", doc("/user-agents.map"))
+:)
