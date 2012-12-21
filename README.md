@@ -6,7 +6,7 @@ Timbrrr is a user agent analysis tool that operates on Apache logs. It includes 
 ## Usage
 The `config` directory includes a database configuration package to set the appropriate index settings. You can import this into a MarkLogic 5 instance to create or update a database.
 
-The `load` directory includes scripts for parsing log entries as well as seeding master data about the universe of user agent strings (using [User Agent String.com](http://www.useragentstring.com/)). I’ve used Information Studion in MarkLogic to load the raw access log files into a collection called `raw`.
+The `load` directory includes scripts for parsing log entries as well as seeding master data about the universe of user agent strings (using [User Agent String.com](http://www.useragentstring.com/)). I’ve used Information Studio in MarkLogic to load the raw access log files into a collection called `raw`.
 
 After loading and processing, a log document will end up looking something like
 
