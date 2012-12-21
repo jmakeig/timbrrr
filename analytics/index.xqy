@@ -109,7 +109,7 @@ return
             <a href="/?ua={if($v) then $agent/*[1] else $agent}&amp;d=v{if($b and $e) then concat('&amp;b=',$b,'&amp;e=',$e) else()}">{if($v) then string-join($agent/*/text(), " ") else $agent}</a></span></td>
           <td><div class="sparkline" id="sparkline{xdmp:random()}"></div></td>
           <td class="direction"><div></div></td>
-          <td class="numeric"><span style="width: {xs:float(cts:frequency($agent) div $max-freq) * 100}%" class="bar">{format-number(cts:frequency($agent), "#,###")}</span></td>
+          <td class="numeric"><span style="width: {xs:float(cts:frequency($agent)) div $max-freq * 100}%" class="bar">{format-number(cts:frequency($agent), "#,###")}</span></td>
         </tr>   
   }
     </tbody>
